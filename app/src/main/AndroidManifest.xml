@@ -47,6 +47,18 @@
         <activity
             android:name=".presentation.activity.ProductUpdateActivity"
             android:label="Update Product" />
+        <activity
+            android:name=".presentation.activity.ClientCategoryListActivity"
+            android:label="Client Category List" />
+        <activity
+            android:name=".presentation.activity.ClientProductListActivity"
+            android:label="Client Product List" />
+        <activity
+            android:name=".presentation.activity.ClientProductDetailActivity"
+            android:label="Client Product Detail" />
+        <activity
+            android:name=".presentation.activity.ClientShoppingBagActivity"
+            />
     </application>
 
 </manifest>

@@ -8,6 +8,7 @@ import androidx.room.PrimaryKey;
 
 import java.io.Serializable;
 
+
 @Entity(tableName = "categories")
 public class Category implements Serializable {
     @PrimaryKey(autoGenerate = true)

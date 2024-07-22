@@ -2,6 +2,7 @@ package com.atenea.unaltodosalau.crudsqlite.presentation.viewModel;
 
 import android.app.Application;
 
+import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 
@@ -12,29 +13,33 @@ import java.util.List;
 
 public class ShoppingBagViewModel extends AndroidViewModel {
     private final ShoppingBagRepository repository;
-    private final LiveData<List<ShoppingBagProduct>> allProducts;
-    private final LiveData<Double> totalPrice;
 
-    public ShoppingBagViewModel(Application application) {
+    public ShoppingBagViewModel(@NonNull Application application) {
         super(application);
         repository = new ShoppingBagRepository(application);
-        allProducts = repository.getAllProducts();
-        totalPrice = repository.getTotalPrice();
     }
 
     public LiveData<List<ShoppingBagProduct>> getAllProducts() {
-        return allProducts;
+        return repository.getAllProducts();
     }
 
     public LiveData<Double> getTotalPrice() {
-        return totalPrice;
+        return repository.getTotalPrice();
     }
 
     public void insert(ShoppingBagProduct product) {
         repository.insert(product);
     }
 
+    public void update(ShoppingBagProduct product) {
+        repository.update(product);
+    }
+
     public void deleteById(String productId) {
         repository.deleteById(productId);
     }
+
+//    public ShoppingBagProduct findById(String id) {
+//        return repository.findById(id);
+//    }
 }

@@ -15,13 +15,11 @@ import java.util.concurrent.Executors;
 public class CategoryRepository {
     private final CategoriesDao categoriesDao;
     private final ExecutorService executorService;
-    private LiveData<List<Category>> allCategories;
 
     public CategoryRepository(Application application) {
         AppDatabase db = AppDatabase.getInstance(application);
         categoriesDao = db.categoriesDao();
         executorService = Executors.newSingleThreadExecutor();
-        allCategories = categoriesDao.getAllCategories();
     }
 
     public LiveData<List<Category>> getAllCategories() {

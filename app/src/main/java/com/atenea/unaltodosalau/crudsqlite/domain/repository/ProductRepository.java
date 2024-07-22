@@ -15,7 +15,7 @@ import java.util.concurrent.Executors;
 public class ProductRepository {
     private final ProductsDao productsDao;
     private final ExecutorService executorService;
-    private LiveData<List<Product>> productsByCategory;
+    private LiveData<List<Product>> productsByCategory, productsByName;
 
     public ProductRepository(Application application) {
         AppDatabase db = AppDatabase.getInstance(application);
@@ -30,6 +30,11 @@ public class ProductRepository {
     public LiveData<List<Product>> getProductsByCategory(int categoryId) {
         productsByCategory = productsDao.getProductsByCategory(categoryId);
         return productsByCategory;
+    }
+
+    public LiveData<List<Product>> getProductsByByName(String name) {
+        productsByName = productsDao.getProductsByByName(name);;
+        return productsByName;
     }
 
     public void insert(Product product) {

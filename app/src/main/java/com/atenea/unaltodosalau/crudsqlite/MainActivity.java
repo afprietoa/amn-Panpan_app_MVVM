@@ -16,6 +16,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
+import android.widget.ImageButton;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -23,6 +24,7 @@ import com.atenea.unaltodosalau.crudsqlite.data.dao.CategoriesDao;
 import com.atenea.unaltodosalau.crudsqlite.data.database.AppDatabase;
 import com.atenea.unaltodosalau.crudsqlite.domain.model.Category;
 import com.atenea.unaltodosalau.crudsqlite.presentation.activity.CategoryListActivity;
+import com.atenea.unaltodosalau.crudsqlite.presentation.activity.ClientCategoryListActivity;
 import com.atenea.unaltodosalau.crudsqlite.presentation.activity.ProductListActivity;
 
 import java.util.List;
@@ -37,21 +39,19 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.crud_screen);
+        setContentView(R.layout.roles_content);
 
-        Button btnCategories = findViewById(R.id.btnCategories);
-        Button btnProducts = findViewById(R.id.btnProducts);
+        ImageButton adminRole = findViewById(R.id.admin_role);
+        ImageButton clientRole = findViewById(R.id.client_role);
 
-        btnCategories.setOnClickListener(view -> {
+        adminRole.setOnClickListener(view -> {
             Intent intent = new Intent(MainActivity.this, CategoryListActivity.class);
             startActivity(intent);
         });
 
-        btnProducts.setOnClickListener(view -> {
-            Intent intent = new Intent(MainActivity.this, ProductListActivity.class);
+        clientRole.setOnClickListener(view -> {
+            Intent intent = new Intent(MainActivity.this, ClientCategoryListActivity.class);
             startActivity(intent);
         });
-
-
     }
 }

@@ -26,15 +26,23 @@ public class ShoppingBagRepository {
         return shoppingBagDao.getAllProducts();
     }
 
+    public LiveData<Double> getTotalPrice() {
+        return shoppingBagDao.getTotalPrice();
+    }
+
     public void insert(ShoppingBagProduct product) {
         executorService.execute(() -> shoppingBagDao.insert(product));
     }
 
-    public void deleteById(String productId) {
-        executorService.execute(() -> shoppingBagDao.deleteById(productId));
+    public void update(ShoppingBagProduct product) {
+        executorService.execute(() -> shoppingBagDao.update(product));
     }
 
-    public LiveData<Double> getTotalPrice() {
-        return shoppingBagDao.getTotalPrice();
+    public void delete(ShoppingBagProduct product) {
+        executorService.execute(() -> shoppingBagDao.delete(product));
+    }
+
+    public void deleteById(String productId) {
+        executorService.execute(() -> shoppingBagDao.deleteById(productId));
     }
 }

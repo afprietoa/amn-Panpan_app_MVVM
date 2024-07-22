@@ -9,19 +9,17 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.atenea.unaltodosalau.crudsqlite.R;
 import com.atenea.unaltodosalau.crudsqlite.domain.model.Category;
-import com.atenea.unaltodosalau.crudsqlite.presentation.viewHolder.CategoryViewHolder;
+import com.atenea.unaltodosalau.crudsqlite.presentation.viewHolder.ClientCategoryViewHolder;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class CategoryListAdapter extends RecyclerView.Adapter<CategoryViewHolder> {
+public class ClientCategoryListAdapter extends RecyclerView.Adapter<ClientCategoryViewHolder> {
     private List<Category> categories = new ArrayList<>();
     private OnItemClickListener listener;
 
     public interface OnItemClickListener {
         void onItemClick(Category category);
-        void onEditClick(Category category);
-        void onDeleteClick(Category category);
     }
 
     public void setOnItemClickListener(OnItemClickListener listener) {
@@ -30,14 +28,14 @@ public class CategoryListAdapter extends RecyclerView.Adapter<CategoryViewHolder
 
     @NonNull
     @Override
-    public CategoryViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public ClientCategoryViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.admin_category_list_item, parent, false);
-        return new CategoryViewHolder(itemView);
+                .inflate(R.layout.client_category_list_item, parent, false);
+        return new ClientCategoryViewHolder(itemView);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull CategoryViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ClientCategoryViewHolder holder, int position) {
         Category currentCategory = categories.get(position);
         holder.bind(currentCategory, listener);
     }

@@ -28,4 +28,7 @@ public interface ProductsDao {
 
     @Query("SELECT * FROM products WHERE id_category = :categoryId")
     LiveData<List<Product>> getProductsByCategory(int categoryId);
+
+    @Query("SELECT * FROM products WHERE name LIKE '%' || :name || '%'")
+    LiveData<List<Product>> getProductsByByName(String name);
 }

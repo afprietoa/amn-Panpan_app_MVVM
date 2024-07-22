@@ -12,15 +12,11 @@
  */
 package com.atenea.unaltodosalau.crudsqlite.data.database;
 
-import androidx.annotation.NonNull;
 import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
-import androidx.room.migration.Migration;
-import androidx.sqlite.db.SupportSQLiteDatabase;
 
 import android.content.Context;
-import android.util.Log;
 
 import com.atenea.unaltodosalau.crudsqlite.data.dao.AddressDao;
 import com.atenea.unaltodosalau.crudsqlite.data.dao.CategoriesDao;
@@ -45,28 +41,12 @@ public abstract class AppDatabase extends RoomDatabase {
     public abstract ProductsDao productsDao();
     public abstract ShoppingBagDao shoppingBagDao();
 
-    public static AppDatabase getInstance(Context context) {
+    public static AppDatabase getInstance(final Context context) {
         if (INSTANCE == null) {
             synchronized (AppDatabase.class) {
                 if (INSTANCE == null) {
                     INSTANCE = Room.databaseBuilder(context.getApplicationContext(),
                                     AppDatabase.class, "ecommerce_db")
-                            .addCallback(new RoomDatabase.Callback() {
-                                @Override
-                                public void onCreate(@NonNull SupportSQLiteDatabase db) {
-                                    super.onCreate(db);
-                                    Log.d("AppDatabase", "Database created");
-                                    DatabaseInitializer.populateAsync(getInstance(context));
-                                }
-
-                                @Override
-                                public void onOpen(@NonNull SupportSQLiteDatabase db) {
-                                    super.onOpen(db);
-                                    Log.d("AppDatabase", "Database opened");
-                                }
-                            })
-                            .fallbackToDestructiveMigration()
-                            .allowMainThreadQueries() // Solo para propósitos de depuración, no usar en producción
                             .build();
                 }
             }

@@ -9,19 +9,17 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.atenea.unaltodosalau.crudsqlite.R;
 import com.atenea.unaltodosalau.crudsqlite.domain.model.Product;
-import com.atenea.unaltodosalau.crudsqlite.presentation.viewHolder.ProductViewHolder;
+import com.atenea.unaltodosalau.crudsqlite.presentation.viewHolder.ClientProductViewHolder;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class ProductListAdapter extends RecyclerView.Adapter<ProductViewHolder> {
+public class ClientProductListAdapter extends RecyclerView.Adapter<ClientProductViewHolder> {
     private List<Product> products = new ArrayList<>();
     private OnItemClickListener listener;
 
     public interface OnItemClickListener {
         void onItemClick(Product product);
-        void onEditClick(Product product);
-        void onDeleteClick(Product product);
     }
 
     public void setOnItemClickListener(OnItemClickListener listener) {
@@ -30,14 +28,14 @@ public class ProductListAdapter extends RecyclerView.Adapter<ProductViewHolder> 
 
     @NonNull
     @Override
-    public ProductViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public ClientProductViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.admin_product_list_item, parent, false);
-        return new ProductViewHolder(itemView);
+                .inflate(R.layout.client_product_list_item, parent, false);
+        return new ClientProductViewHolder(itemView);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ProductViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ClientProductViewHolder holder, int position) {
         Product currentProduct = products.get(position);
         holder.bind(currentProduct, listener);
     }

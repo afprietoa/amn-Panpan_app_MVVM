@@ -11,32 +11,25 @@ import com.atenea.unaltodosalau.crudsqlite.domain.repository.ProductRepository;
 
 import java.util.List;
 
-public class ProductViewModel extends AndroidViewModel {
-    private final ProductRepository repository;
+public class ClientProductListViewModel extends AndroidViewModel {
+    private ProductRepository repository;
+    private LiveData<List<Product>> allProducts;
 
-    public ProductViewModel(@NonNull Application application) {
+    public ClientProductListViewModel(@NonNull Application application) {
         super(application);
         repository = new ProductRepository(application);
+        allProducts = repository.getAllProducts();
     }
 
     public LiveData<List<Product>> getAllProducts() {
-        return repository.getAllProducts();
+        return allProducts;
     }
 
     public LiveData<List<Product>> getProductsByCategory(int categoryId) {
         return repository.getProductsByCategory(categoryId);
     }
 
-
-    public void insert(Product product) {
-        repository.insert(product);
-    }
-
-    public void update(Product product) {
-        repository.update(product);
-    }
-
-    public void delete(Product product) {
-        repository.delete(product);
+    public LiveData<List<Product>> getProductsByByName(String name) {
+        return repository.getProductsByByName(name);
     }
 }
