@@ -14,8 +14,6 @@ import com.atenea.unaltodosalau.crudsqlite.R;
 import com.atenea.unaltodosalau.crudsqlite.domain.model.Product;
 import com.atenea.unaltodosalau.crudsqlite.domain.model.ShoppingBagProduct;
 import com.atenea.unaltodosalau.crudsqlite.presentation.viewModel.ClientProductDetailViewModel;
-import com.atenea.unaltodosalau.crudsqlite.presentation.viewModel.ProductViewModel;
-import com.atenea.unaltodosalau.crudsqlite.presentation.viewModel.ShoppingBagViewModel;
 import com.bumptech.glide.Glide;
 
 public class ClientProductDetailActivity extends AppCompatActivity {

@@ -33,7 +33,8 @@ public class ShoppingBagViewHolder extends BaseViewHolder {
         productName.setText(product.getName());
         productPrice.setText(String.valueOf(product.getPrice()));
         productQuantity.setText(String.valueOf(product.getQuantity()));
-        Glide.with(itemView.getContext()).load(product.getImage1()).into(productImage);
+        int imageResId = Integer.parseInt(product.getImage1());
+        Glide.with(itemView.getContext()).load(imageResId).into(productImage);
 
         incrementButton.setOnClickListener(v -> listener.onIncrementClick(product));
         decrementButton.setOnClickListener(v -> listener.onDecrementClick(product));

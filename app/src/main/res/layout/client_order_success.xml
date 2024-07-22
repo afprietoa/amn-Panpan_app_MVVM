@@ -1,6 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:padding="20dp"
+    android:background="@android:color/white">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <!-- Image of the check mark -->
+    <ImageView
+        android:id="@+id/check_mark_image"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="60dp"
+        android:src="@drawable/comprobado"
+        android:contentDescription="@string/confirmation_image" />
+
+    <!-- Confirmation message -->
+    <TextView
+        android:id="@+id/confirmation_message"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/check_mark_image"
+        android:layout_marginTop="20dp"
+        android:text="Tu orden fue procesada exitosamente utilizando la tarjeta master **** 3564"
+        android:textSize="17sp"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:textAlignment="center" />
+
+    <!-- Secondary message -->
+    <TextView
+        android:id="@+id/secondary_message"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/confirmation_message"
+        android:layout_marginTop="7dp"
+        android:text="Mira el estado de tu compra en la seccion de pedidos"
+        android:textSize="15sp"
+        android:gravity="center"
+        android:textAlignment="center" />
+
+    <!-- Continue button -->
+    <Button
+        android:id="@+id/continue_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="20dp"
+        android:text="Finalizar compra"
+        android:textColor="@android:color/white" />
+
+</RelativeLayout>
