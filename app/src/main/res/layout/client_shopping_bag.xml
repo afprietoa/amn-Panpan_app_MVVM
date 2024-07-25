@@ -1,57 +1,96 @@
 <!-- res/layout/activity_shopping_bag.xml -->
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#F8F7EE">
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
-        android:layout_width="match_parent"
+
+    <TextView
+        android:id="@+id/toolbar_title"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="?attr/colorPrimary"
-        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-        app:navigationIcon="@drawable/ic_arrow_back"
-        app:title="Mi Orden"
-        app:titleTextColor="@color/white"/>
+        android:layout_marginStart="85dp"
+        android:text="Mi Pedido"
+        android:textColor="#45373D"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/imageButton"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/imageButton" />
 
-
+    <ImageButton
+        android:id="@+id/imageButton"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="40dp"
+        android:background="@android:color/transparent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/baseline_arrow_back_24"
+        android:contentDescription="@string/btn_atras"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/shopping_cart_list"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@id/toolbar"
-        android:layout_above="@+id/bottom_bar"
-        android:divider="@color/darker_gray"
-        android:dividerHeight="1dp"/>
-
+        android:layout_width="341dp"
+        android:layout_height="402dp"
+        android:layout_marginTop="38dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar_title" />
 
     <RelativeLayout
         android:id="@+id/bottom_bar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:background="@color/gray100"
-        android:padding="16dp">
+        android:layout_marginBottom="51dp"
+        android:background="#F8F7EE"
+        android:padding="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/barnavcliente"
+        app:layout_constraintTop_toBottomOf="@+id/shopping_cart_list"
+        tools:layout_editor_absoluteX="16dp">
 
         <TextView
             android:id="@+id/total_price"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="TOTAL: 2120000.0$"
-            android:textSize="18sp"
-            android:textStyle="bold"
             android:layout_alignParentStart="true"
-            android:layout_centerVertical="true"/>
+            android:layout_centerVertical="true"
+            android:layout_marginStart="16dp"
+            android:text="TOTAL:$ 3.500"
+            android:textColor="#965E08"
+            android:textSize="18sp"
+            android:textStyle="bold" />
 
         <Button
             android:id="@+id/confirm_order_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Confirmar orden"
-            android:backgroundTint="@color/primary"
-            android:textColor="@color/white"
             android:layout_alignParentEnd="true"
-            android:layout_centerVertical="true"/>
+            android:layout_centerVertical="true"
+            android:backgroundTint="#5B4850"
+            android:text="Confirmar orden"
+            android:textColor="@color/white"
+            tools:layout_editor_absoluteX="242dp"
+            tools:layout_editor_absoluteY="598dp" />
+
     </RelativeLayout>
-</RelativeLayout>
+
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/barnavcliente"
+        style="@style/MyBottomNavigationView"
+        android:layout_width="match_parent"
+        android:layout_height="65dp"
+        android:background="#90531D"
+        app:itemIconSize="@dimen/bottom_navigation_icon_size"
+        app:itemIconTint="@drawable/fientecbarra"
+        app:itemTextColor="#FFFEF5"
+        app:labelVisibilityMode="labeled"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:menu="@menu/barnav_menu_cliente" />
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,47 +1,141 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
+    android:background="#F8F7EE"
     android:padding="10dp">
 
-    <TextView
-        android:id="@+id/product_client_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Product Name"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"/>
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardpancliente"
+        android:layout_width="165dp"
+        android:layout_height="292dp"
+        android:layout_marginTop="32dp"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="10dp"
+        app:layout_constraintEnd_toStartOf="@+id/cardpancliente2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-    <TextView
-        android:id="@+id/product_client_description"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Product Description"
-        android:textSize="14sp"
-        android:textColor="@color/darker_gray"
-        android:layout_below="@id/product_client_name"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="4dp"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            tools:ignore="UseCompoundDrawables">
 
-    <TextView
-        android:id="@+id/product_client_price"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="1000000.0$"
-        android:textSize="14sp"
-        android:textStyle="bold"
-        android:layout_below="@id/product_client_description"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="4dp"/>
+            <ImageView
+                android:id="@+id/product_client_image"
+                android:layout_width="match_parent"
+                android:layout_height="160.41dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/baggeeprod" />
 
-    <ImageView
-        android:id="@+id/product_client_image"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
-        android:scaleType="centerCrop"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentTop="true"
-        android:src="@drawable/product_image" />
-</RelativeLayout>
+            <TextView
+                android:id="@+id/product_client_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="6dp"
+                android:layout_marginTop="9dp"
+                android:fontFamily="@font/poppins_medium"
+                android:text="Baggett"
+                android:textAllCaps="false"
+                android:textColor="#45373D"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/product_client_descriptionbagge"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="6dp"
+                android:layout_marginTop="6dp"
+                android:text="Pan francés crujiente
+                y suave."
+                android:textColor="#757575"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/product_client_pricebagget"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="6dp"
+                android:layout_marginTop="16dp"
+                android:fontFamily="sans-serif"
+                android:text="$ 3.500"
+                android:textAllCaps="false"
+                android:textColor="#965E08"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardpancliente2"
+        android:layout_width="165dp"
+        android:layout_height="292dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="13dp"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="TextSizeCheck">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            tools:ignore="UseCompoundDrawables">
+
+            <ImageView
+                android:id="@+id/imageViewcroas"
+                android:layout_width="match_parent"
+                android:layout_height="160.41dp"
+                android:contentDescription="@string/imgcroissprodCliente"
+                app:srcCompat="@drawable/croissant" />
+
+            <TextView
+                android:id="@+id/textViewcroissant"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="6dp"
+                android:layout_marginTop="9dp"
+                android:fontFamily="@font/poppins_medium"
+                android:text="Croissant"
+                android:textAllCaps="false"
+                android:textColor="#45373D"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/textViewcropre"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="6dp"
+                android:layout_marginTop="6dp"
+                android:fontFamily="sans-serif"
+                android:text="Hoja de masa fina, dorada y mantequillosa."
+                android:textAllCaps="false"
+                android:textColor="#757575"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/product_client_priceCrois"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="6dp"
+                android:layout_marginTop="16dp"
+                android:fontFamily="sans-serif"
+                android:text="$ 4.500"
+                android:textAllCaps="false"
+                android:textColor="#965E08"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:padding="10dp">
@@ -11,37 +12,33 @@
         android:text="Product Name"
         android:textSize="16sp"
         android:textStyle="bold"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"/>
+        tools:layout_editor_absoluteX="99dp"
+        tools:layout_editor_absoluteY="10dp" />
 
     <TextView
-        android:id="@+id/product_description"
+        android:id="@+id/product_descriptionbaggett_detail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Product Description"
-        android:textSize="14sp"
         android:textColor="@color/darker_gray"
-        android:layout_below="@id/product_name"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="4dp"/>
+        android:textSize="14sp"
+        tools:layout_editor_absoluteX="109dp"
+        tools:layout_editor_absoluteY="42dp" />
 
     <TextView
-        android:id="@+id/product_price"
+        android:id="@+id/product_price_bagett"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="1000000.0$"
         android:textSize="14sp"
         android:textStyle="bold"
-        android:layout_below="@id/product_description"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="4dp"/>
+        tools:layout_editor_absoluteX="119dp"
+        tools:layout_editor_absoluteY="71dp" />
 
     <ImageView
-        android:id="@+id/product_image"
+        android:id="@+id/product_baggett_detail"
         android:layout_width="70dp"
         android:layout_height="70dp"
         android:scaleType="centerCrop"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentTop="true"
         android:src="@drawable/product_image" />
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

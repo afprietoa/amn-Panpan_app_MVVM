@@ -1,41 +1,98 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#F7F6ED">
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/product_client_list"
+        android:layout_width="333dp"
+        android:layout_height="491dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginBottom="2dp"
+        android:background="#F8F7EE"
+        app:layout_constraintBottom_toTopOf="@+id/barnavcliente"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textTituloProductcliente" />
 
     <EditText
         android:id="@+id/search_bar"
-        android:layout_width="344dp"
-        android:layout_height="44dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="10dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginBottom="10dp"
-        android:layout_toStartOf="@+id/shopping_cart_icon"
+        android:layout_width="201dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="44dp"
+        android:layout_marginEnd="20dp"
+        android:background="@drawable/search_view_background"
         android:drawableEnd="@drawable/ic_search"
         android:hint="Buscar producto"
-        android:padding="10dp" />
+        android:padding="10dp"
+        app:layout_constraintEnd_toStartOf="@+id/shopping_cart_icon"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textTPrincipalproductcliente"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="6dp"
+        android:layout_marginEnd="22dp"
+        android:fontFamily="@font/rtladamscriptbold"
+        android:text="@string/textvpanpancat_prod"
+        android:textSize="23sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/search_bar"
+        app:layout_constraintEnd_toStartOf="@+id/search_bar"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/search_bar"
+        app:layout_constraintVertical_bias="0.444" />
 
     <ImageButton
         android:id="@+id/shopping_cart_icon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@drawable/ic_shopping_cart"
-        android:layout_alignParentEnd="true"
+        android:layout_marginTop="6dp"
         android:layout_marginEnd="16dp"
-        android:layout_marginTop="16dp"
-        android:contentDescription="Carrito de compras"/>
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/ic_shopping_cart"
+        android:contentDescription="Carrito de compras"
+        app:layout_constraintBottom_toBottomOf="@+id/search_bar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/search_bar"
+        app:layout_constraintVertical_bias="0.35" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/product_client_list"
+    <TextView
+        android:id="@+id/textTituloProductcliente"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:fontFamily="@font/poppins_medium"
+        android:text="@string/textvprodctlistcliente"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/search_bar"
+        tools:ignore="MissingConstraints" />
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/barnavcliente"
+        style="@style/MyBottomNavigationView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@id/search_bar"
-        android:layout_marginTop="16dp"
-        android:divider="@color/darker_gray"
-        android:dividerHeight="1dp"/>
-</RelativeLayout>
+        android:layout_height="65dp"
+        android:background="#90531D"
+        app:itemIconSize="@dimen/bottom_navigation_icon_size"
+        app:itemIconTint="@drawable/fientecbarra"
+        app:itemTextColor="#FFFEF5"
+        app:labelVisibilityMode="labeled"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:menu="@menu/barnav_menu_cliente" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

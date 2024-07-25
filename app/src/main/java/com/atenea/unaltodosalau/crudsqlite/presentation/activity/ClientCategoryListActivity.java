@@ -9,8 +9,6 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.atenea.unaltodosalau.crudsqlite.R;
-import com.atenea.unaltodosalau.crudsqlite.domain.model.Category;
-import com.atenea.unaltodosalau.crudsqlite.presentation.adapter.CategoryListAdapter;
 import com.atenea.unaltodosalau.crudsqlite.presentation.adapter.ClientCategoryListAdapter;
 import com.atenea.unaltodosalau.crudsqlite.presentation.viewModel.ClientCategoryListViewModel;
 
@@ -24,7 +22,7 @@ public class ClientCategoryListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.client_category_list);
 
-        recyclerView = findViewById(R.id.category_client_list);
+        recyclerView = findViewById(R.id.category_listcliente);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         adapter = new ClientCategoryListAdapter();
         recyclerView.setAdapter(adapter);

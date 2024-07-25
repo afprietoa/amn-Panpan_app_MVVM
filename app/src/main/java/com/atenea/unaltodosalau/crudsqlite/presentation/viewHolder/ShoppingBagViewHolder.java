@@ -21,9 +21,9 @@ public class ShoppingBagViewHolder extends BaseViewHolder {
     public ShoppingBagViewHolder(@NonNull View itemView) {
         super(itemView);
         productName = itemView.findViewById(R.id.product_name);
-        productPrice = itemView.findViewById(R.id.product_price);
-        productQuantity = itemView.findViewById(R.id.quantity);
-        productImage = itemView.findViewById(R.id.product_image);
+        productPrice = itemView.findViewById(R.id.product_price_bagett);
+        productQuantity = itemView.findViewById(R.id.quantity_shopclitem);
+        productImage = itemView.findViewById(R.id.product_baggett_detail);
         deleteButton = itemView.findViewById(R.id.delete_button);
         incrementButton = itemView.findViewById(R.id.increment_button);
         decrementButton = itemView.findViewById(R.id.decrement_button);

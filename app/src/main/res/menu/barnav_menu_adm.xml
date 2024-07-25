@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/nav_homeadm"
+        android:icon="@drawable/iniciobaradm"
+        android:title="Inicio"
+        app:showAsAction="withText" />
+
+    <item
+        android:id="@+id/nav_ordersadm"
+        android:icon="@drawable/pedidosbaradm"
+        android:title="Pedidos"
+        app:showAsAction="withText" />
+
+    <item
+        android:id="@+id/nav_estadisticas"
+        android:icon="@drawable/estadbaradm"
+        android:title="Estadisticas"
+        app:showAsAction="withText" />
+
+    <item
+        android:id="@+id/nav_profileadm"
+        android:icon="@drawable/perfil"
+        android:title="Perfil"
+        app:showAsAction="withText" />
+</menu>

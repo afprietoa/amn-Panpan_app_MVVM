@@ -1,52 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#F7F6ED">
 
-    <ImageView
-        android:id="@+id/background_image"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:scaleType="centerCrop"
-        android:src="@drawable/profile_background"
-        android:contentDescription="@string/alt_profile_backg" />
+    <TextView
+        android:id="@+id/textViewmiperfilcliente"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="24dp"
+        android:text="Mi Perfil"
+        android:textColor="#45373D"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageView
-        android:id="@+id/logout_icon"
-        android:layout_width="35dp"
-        android:layout_height="35dp"
-        android:layout_alignParentEnd="true"
-        android:layout_marginEnd="15dp"
-        android:layout_marginTop="15dp"
-        android:src="@drawable/logout"
-        android:contentDescription="@string/alt_logout" />
 
     <ImageView
         android:id="@+id/profile_image"
         android:layout_width="150dp"
         android:layout_height="150dp"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="80dp"
-        android:src="@drawable/user_image"
-        android:contentDescription="@string/alt_login_logo" />
+        android:layout_marginTop="76dp"
+        android:src="@drawable/img_perfil"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.cardview.widget.CardView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="0dp"
+        android:id="@+id/cardView"
+        android:layout_width="333dp"
+        android:layout_height="330dp"
+        android:layout_margin="0dp"
+        android:layout_marginTop="18dp"
+        android:layout_marginBottom="46dp"
         android:background="@color/white"
         android:backgroundTint="#B3FFFFFF"
-        android:layout_marginStart="0dp"
-        android:layout_marginEnd="0dp"
-        android:layout_margin="0dp"
-        app:cardCornerRadius="40dp">
+        app:cardCornerRadius="40dp"
+        app:layout_constraintBottom_toTopOf="@+id/btncerrarSesion"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/profile_image">
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_width="308dp"
+            android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:orientation="vertical"
             android:padding="30dp">
@@ -60,8 +62,8 @@
                 <ImageView
                     android:layout_width="24dp"
                     android:layout_height="24dp"
-                    android:src="@drawable/ic_menu"
-                    android:contentDescription="@string/alt_info_name"/>
+                    android:contentDescription="@string/alt_info_name"
+                    android:src="@drawable/name" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -73,6 +75,7 @@
                         android:id="@+id/user_name"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:shadowColor="@android:color/transparent"
                         android:text="@string/txt_profile_name"
                         android:textSize="16sp" />
 
@@ -80,7 +83,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/label_profile_name"
-                        android:textColor="@color/darker_gray"
+                        android:textColor="#965E08"
                         android:textSize="12sp" />
                 </LinearLayout>
             </LinearLayout>
@@ -94,8 +97,8 @@
                 <ImageView
                     android:layout_width="24dp"
                     android:layout_height="24dp"
-                    android:src="@drawable/ic_menu_info_details"
-                    android:contentDescription="@string/alt_info_email"/>
+                    android:contentDescription="@string/alt_info_email"
+                    android:src="@drawable/group" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -114,7 +117,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/label_profile_email"
-                        android:textColor="@color/darker_gray"
+                        android:textColor="#965E08"
                         android:textSize="12sp" />
                 </LinearLayout>
             </LinearLayout>
@@ -128,8 +131,8 @@
                 <ImageView
                     android:layout_width="24dp"
                     android:layout_height="24dp"
-                    android:src="@drawable/ic_menu_info_details"
-                    android:contentDescription="@string/alt_info_phone"/>
+                    android:contentDescription="@string/alt_info_phone"
+                    android:src="@drawable/phone" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -148,19 +151,52 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/label_profile_phone"
-                        android:textColor="@color/darker_gray"
+                        android:textColor="#965E08"
                         android:textSize="12sp" />
                 </LinearLayout>
             </LinearLayout>
 
             <Button
                 android:id="@+id/update_info_button"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_width="235dp"
+                android:layout_height="48dp"
                 android:layout_marginTop="40dp"
-                android:text="Actualizar información"
-                android:textColor="@color/white"
-                android:backgroundTint="#3F51B5" />
+                android:backgroundTint="#5B4850"
+                android:fontFamily="@font/open_sans_semibold"
+                android:text="Actualizar Información"
+                android:textColor="@color/white" />
+
         </LinearLayout>
     </androidx.cardview.widget.CardView>
-</RelativeLayout>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/barnavcliente"
+        style="@style/MyBottomNavigationView"
+        android:layout_width="match_parent"
+        android:layout_height="65dp"
+        android:background="#90531D"
+        app:itemIconSize="@dimen/bottom_navigation_icon_size"
+        app:itemIconTint="@drawable/fientecbarra"
+        app:itemTextColor="#FFFEF5"
+        app:labelVisibilityMode="labeled"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:menu="@menu/barnav_menu_cliente" />
+
+    <Button
+        android:id="@+id/btncerrarSesion"
+        android:layout_width="153dp"
+        android:layout_height="38dp"
+        android:layout_marginStart="180dp"
+        android:layout_marginBottom="28dp"
+        android:backgroundTint="#F2F1E5"
+        android:fontFamily="@font/poppins_medium"
+        android:text="Cerrar Sesión"
+        android:textColor="#5B4850"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toTopOf="@+id/barnavcliente"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

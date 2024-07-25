@@ -20,8 +20,8 @@ public class ClientProductViewHolder extends RecyclerView.ViewHolder {
     public ClientProductViewHolder(@NonNull View itemView) {
         super(itemView);
         txtName = itemView.findViewById(R.id.product_client_name);
-        txtDescription = itemView.findViewById(R.id.product_client_description);
-        txtPrice = itemView.findViewById(R.id.product_client_price);
+        txtDescription = itemView.findViewById(R.id.product_client_descriptionbagge);
+        txtPrice = itemView.findViewById(R.id.product_client_pricebagget);
         imgProduct = itemView.findViewById(R.id.product_client_image);
     }
 

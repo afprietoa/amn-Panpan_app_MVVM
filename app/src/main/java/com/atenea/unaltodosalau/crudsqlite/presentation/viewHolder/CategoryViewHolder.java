@@ -18,8 +18,8 @@ public class CategoryViewHolder extends BaseViewHolder {
 
     public CategoryViewHolder(@NonNull View itemView) {
         super(itemView);
-        txtName = itemView.findViewById(R.id.category_name);
-        txtDescription = itemView.findViewById(R.id.category_description);
+        txtName = itemView.findViewById(R.id.category_panaderia);
+        txtDescription = itemView.findViewById(R.id.category_descriptionpanaderia);
         imgCategory = itemView.findViewById(R.id.category_image);
         btnEdit = itemView.findViewById(R.id.edit_category_button);
         btnDelete = itemView.findViewById(R.id.delete_category_button);

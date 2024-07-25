@@ -19,9 +19,9 @@ public class ProductViewHolder extends BaseViewHolder {
     public ProductViewHolder(@NonNull View itemView) {
         super(itemView);
         txtName = itemView.findViewById(R.id.product_name);
-        txtDescription = itemView.findViewById(R.id.product_description);
-        txtPrice = itemView.findViewById(R.id.product_price);
-        imgProduct = itemView.findViewById(R.id.product_image);
+        txtDescription = itemView.findViewById(R.id.product_descriptionbaggett_detail);
+        txtPrice = itemView.findViewById(R.id.product_price_bagett);
+        imgProduct = itemView.findViewById(R.id.product_baggett_detail);
         btnEdit = itemView.findViewById(R.id.edit_product_button);
         btnDelete = itemView.findViewById(R.id.delete_product_button);
     }

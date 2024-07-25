@@ -1,6 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#F7F6ED"
+    android:padding="20dp">
+
+
+    <ImageView
+        android:id="@+id/check_mark_image"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="60dp"
+        android:contentDescription="@string/confirmation_image"
+        android:src="@drawable/comprobado"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/confirmation_message"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/check_mark_image"
+        android:layout_marginTop="44dp"
+        android:gravity="center"
+        android:text="Tu orden fue procesada exitosamente utilizando la tarjeta master **** 3564"
+        android:textAlignment="center"
+        android:textSize="17sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/check_mark_image" />
+
+    <TextView
+        android:id="@+id/secondary_message"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/confirmation_message"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:text="Mira el estado de tu compra en la seccion de pedidos"
+        android:textAlignment="center"
+        android:textSize="15sp"
+        app:layout_constraintTop_toBottomOf="@+id/confirmation_message"
+        tools:layout_editor_absoluteX="24dp" />
+
+    <Button
+        android:id="@+id/continue_button"
+        android:layout_width="235dp"
+        android:layout_height="48dp"
+        android:layout_marginBottom="132dp"
+        android:backgroundTint="#5B4850"
+        android:fontFamily="@font/open_sans_semibold"
+        android:text="Finalizar compra"
+        android:textColor="@android:color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

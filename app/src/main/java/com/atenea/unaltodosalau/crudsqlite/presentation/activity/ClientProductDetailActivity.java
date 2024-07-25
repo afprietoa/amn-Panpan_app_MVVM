@@ -3,6 +3,7 @@ package com.atenea.unaltodosalau.crudsqlite.presentation.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -14,15 +15,14 @@ import com.atenea.unaltodosalau.crudsqlite.R;
 import com.atenea.unaltodosalau.crudsqlite.domain.model.Product;
 import com.atenea.unaltodosalau.crudsqlite.domain.model.ShoppingBagProduct;
 import com.atenea.unaltodosalau.crudsqlite.presentation.viewModel.ClientProductDetailViewModel;
-import com.atenea.unaltodosalau.crudsqlite.presentation.viewModel.ProductViewModel;
-import com.atenea.unaltodosalau.crudsqlite.presentation.viewModel.ShoppingBagViewModel;
 import com.bumptech.glide.Glide;
 
 public class ClientProductDetailActivity extends AppCompatActivity {
     private ClientProductDetailViewModel viewModel;
     private TextView productName, productDescription, productPrice, productQuantity;
     private ImageView productImage;
-    private Button addToCartButton, incrementButton, decrementButton;
+    private ImageButton incrementButton, decrementButton;
+    private Button addToCartButton;
     private Product product;
     private int quantity = 1;
 
@@ -31,14 +31,14 @@ public class ClientProductDetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.client_product_detail);
 
-        productName = findViewById(R.id.product_name);
-        productDescription = findViewById(R.id.product_description);
-        productPrice = findViewById(R.id.product_price);
-        productQuantity = findViewById(R.id.product_quantity);
-        productImage = findViewById(R.id.product_image);
-        addToCartButton = findViewById(R.id.add_to_cart_button);
-        incrementButton = findViewById(R.id.increment_button);
-        decrementButton = findViewById(R.id.decrement_button);
+        productName = findViewById(R.id.product_croissant);
+        productDescription = findViewById(R.id.product_descriptionbaggett_detail);
+        productPrice = findViewById(R.id.product_price_bagett);
+        productQuantity = findViewById(R.id.product_quantity_baggettdetail);
+        productImage = findViewById(R.id.product_baggett_detail);
+        addToCartButton = findViewById(R.id.add_to_cart_buttondetail);
+        incrementButton = findViewById(R.id.increment_button_detail);
+        decrementButton = findViewById(R.id.decrement_button_detail);
 
         viewModel = new ViewModelProvider(this).get(ClientProductDetailViewModel.class);
 

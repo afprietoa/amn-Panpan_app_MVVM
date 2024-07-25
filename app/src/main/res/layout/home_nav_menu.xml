@@ -19,7 +19,7 @@
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="-1dp"
         android:background="?attr/colorPrimary"
-        app:menu="@menu/home_nav_menu_item"
+        app:menu="@menu/barnav_menu_adm"
         app:labelVisibilityMode="labeled" />
 
 </RelativeLayout>
