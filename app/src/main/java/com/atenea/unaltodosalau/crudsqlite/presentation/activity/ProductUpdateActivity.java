@@ -16,6 +16,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.atenea.unaltodosalau.crudsqlite.R;
 import com.atenea.unaltodosalau.crudsqlite.domain.model.Product;
 import com.atenea.unaltodosalau.crudsqlite.presentation.viewModel.ProductViewModel;
+import com.bumptech.glide.Glide;
 
 public class ProductUpdateActivity extends AppCompatActivity {
     private ProductViewModel productViewModel;
@@ -44,10 +45,12 @@ public class ProductUpdateActivity extends AppCompatActivity {
             etName.setText(product.getName());
             etDescription.setText(product.getDescription());
             etPrice.setText(String.valueOf(product.getPrice()));
-            imageUri1 = Uri.parse(product.getImage1());
-            imageUri2 = Uri.parse(product.getImage2());
-            imgProduct1.setImageURI(imageUri1);
-            imgProduct2.setImageURI(imageUri2);
+            //imageUri1 = Uri.parse(product.getImage1());
+            //imageUri2 = Uri.parse(product.getImage2());
+            int imageResId1 = Integer.parseInt(product.getImage1());
+            int imageResId2 = Integer.parseInt(product.getImage2());
+            Glide.with(this).load(imageResId1).into(imgProduct1);
+            Glide.with(this).load(imageResId2).into(imgProduct2);
         }
 
         imgProduct1.setOnClickListener(v -> {

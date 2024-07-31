@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
@@ -17,6 +18,7 @@ import androidx.lifecycle.ViewModelProvider;
 import com.atenea.unaltodosalau.crudsqlite.R;
 import com.atenea.unaltodosalau.crudsqlite.domain.model.Category;
 import com.atenea.unaltodosalau.crudsqlite.presentation.viewModel.CategoryViewModel;
+import com.bumptech.glide.Glide;
 
 public class CategoryCreateActivity extends AppCompatActivity {
     private CategoryViewModel categoryViewModel;
@@ -38,6 +40,16 @@ public class CategoryCreateActivity extends AppCompatActivity {
 
         categoryViewModel = new ViewModelProvider(this).get(CategoryViewModel.class);
 
+        activityResultLauncher = registerForActivityResult(
+                new ActivityResultContracts.StartActivityForResult(),
+                result -> {
+                    if (result.getResultCode() == RESULT_OK && result.getData() != null) {
+                        imageUri = result.getData().getData();
+                        Glide.with(this).load(imageUri).into(imgCategory);
+                    }
+                }
+        );
+
         imgCategory.setOnClickListener(v -> {
             Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
             activityResultLauncher.launch(intent);
@@ -58,13 +70,4 @@ public class CategoryCreateActivity extends AppCompatActivity {
             }
         });
     }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == 100 && resultCode == RESULT_OK && data != null) {
-            imageUri = data.getData();
-            imgCategory.setImageURI(imageUri);
-        }
     }
-}

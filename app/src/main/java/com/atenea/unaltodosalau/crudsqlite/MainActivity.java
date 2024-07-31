@@ -39,19 +39,22 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.roles_content);
+        setContentView(R.layout.splash_screen);
+        //setContentView(R.layout.roles_content);
 
-        ImageButton adminRole = findViewById(R.id.admin_role);
-        ImageButton clientRole = findViewById(R.id.client_role);
 
-        adminRole.setOnClickListener(view -> {
-            Intent intent = new Intent(MainActivity.this, CategoryListActivity.class);
-            startActivity(intent);
-        });
 
-        clientRole.setOnClickListener(view -> {
-            Intent intent = new Intent(MainActivity.this, ClientCategoryListActivity.class);
-            startActivity(intent);
-        });
+//        ImageButton adminRole = findViewById(R.id.admin_role);
+//        ImageButton clientRole = findViewById(R.id.client_role);
+//
+//        adminRole.setOnClickListener(view -> {
+//            Intent intent = new Intent(MainActivity.this, CategoryListActivity.class);
+//            startActivity(intent);
+//        });
+//
+//        clientRole.setOnClickListener(view -> {
+//            Intent intent = new Intent(MainActivity.this, ClientCategoryListActivity.class);
+//            startActivity(intent);
+//        });
     }
 }

@@ -31,7 +31,7 @@ public class CategoryListActivity extends AppCompatActivity {
         setContentView(R.layout.admin_category_list);
         Log.d("CategoryListActivity", "Activity created");
 
-        recyclerView = findViewById(R.id.category_list);
+        recyclerView = findViewById(R.id.category_list_admin);
         fabAddCategory = findViewById(R.id.add_category_button);
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this));

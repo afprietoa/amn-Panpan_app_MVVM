@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/navcliente_inicio"
+        android:icon="@drawable/iniciobarcliente"
+        android:title="@string/nav_iniciocliente"
+        app:showAsAction="withText"/>
+
+    <item
+        android:id="@+id/navcliente_pedidos"
+        android:icon="@drawable/ico_order_list"
+        android:title="@string/nav_pedidoscliente"
+        app:showAsAction="withText"/>
+
+    <item
+        android:id="@+id/navcliente_ubicación"
+        android:icon="@drawable/ubicacionbarcliente"
+        android:title="@string/nav_ubicacióncliente"
+        app:showAsAction="withText" />
+
+    <item
+        android:id="@+id/navcliente_perfil"
+        android:icon="@drawable/perfilbarcliente"
+        android:title="@string/nav_perfilcliente"
+        app:showAsAction="withText"/>
+</menu>

@@ -1,135 +1,173 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp">
+    android:background="#F8F7EE">
 
 
     <ImageView
-        android:id="@+id/product_image"
-        android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:scaleType="centerCrop"
+        android:id="@+id/img_product_detail_client"
+        android:layout_width="411dp"
+        android:layout_height="288dp"
         android:layout_alignParentTop="true"
-        android:layout_marginBottom="20dp"
-        android:src="@drawable/product_image" />
+        android:scaleType="centerCrop"
+        android:src="@drawable/baggeeprod"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/product_name"
+        android:id="@+id/text_pricipal_product_detail_client"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="34dp"
+        android:layout_marginEnd="24dp"
+        android:fontFamily="@font/poppins_medium"
+        android:text="Baggett"
+        android:textColor="#45373D"
         android:textSize="18sp"
-        android:text="Jordan Nike"
         android:textStyle="bold"
-        android:layout_below="@id/product_image"
-        android:layout_marginBottom="10dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/img_product_detail_client" />
 
     <TextView
-        android:id="@+id/product_description_title"
+        android:id="@+id/text_product_description_detail_client"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Descripción"
-        android:textStyle="bold"
-        android:layout_below="@id/product_name"
-        android:layout_marginBottom="10dp" />
-
-    <TextView
-        android:id="@+id/product_description"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Zapatos de Lujo"
-        android:layout_below="@id/product_description_title"
-        android:layout_marginBottom="20dp" />
-
-    <TextView
-        android:id="@+id/product_price_title"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Precio"
-        android:textStyle="bold"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="24dp"
+        android:text="Pan francés crujiente y suave."
+        android:textColor="#262525"
         android:textSize="16sp"
-        android:layout_below="@id/product_description"
-        android:layout_marginBottom="10dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_pricipal_product_detail_client" />
 
     <TextView
-        android:id="@+id/product_price"
+        android:id="@+id/product_price_detail_client"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="500000.0$"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="24dp"
+        android:fontFamily="sans-serif"
+        android:text="$ 3.500"
+        android:textColor="#965E08"
         android:textSize="16sp"
-        android:layout_below="@id/product_price_title"
-        android:layout_marginBottom="20dp" />
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_product_description_detail_client" />
 
     <TextView
-        android:id="@+id/order_info"
+        android:id="@+id/order_info_detail_client"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@id/product_price_detail_client"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="24dp"
         android:text="Tu orden"
-        android:textStyle="bold"
+        android:textColor="#45373D"
         android:textSize="16sp"
-        android:layout_below="@id/product_price"
-        android:layout_marginBottom="10dp" />
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/product_price_detail_client" />
 
     <TextView
-        android:id="@+id/product_quantity"
+        android:id="@+id/product_quantity_detail_client"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@id/order_info_detail_client"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="24dp"
         android:text="Cantidad: 1"
-        android:layout_below="@id/order_info"
-        android:layout_marginBottom="10dp" />
+        android:textColor="#262525"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/order_info_detail_client" />
 
     <TextView
-        android:id="@+id/product_unit_price"
+        android:id="@+id/product_unit_price_detail_client"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Precio C/U: 500000.0$"
-        android:layout_below="@id/product_quantity"
-        android:layout_marginBottom="20dp" />
+        android:layout_below="@id/product_quantity_detail_client"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="24dp"
+        android:text="Precio C/U: $ 3.500"
+        android:textColor="#262525"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/product_quantity_detail_client" />
+
+    <Button
+        android:id="@+id/add_to_cart_button_detail_client"
+        android:layout_width="154dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="35dp"
+        android:layout_marginEnd="24dp"
+        android:layout_toEndOf="@id/quantity_layout"
+        android:backgroundTint="#5B4850"
+        android:text="AGREGAR"
+        android:textColor="@android:color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/product_unit_price_detail_client" />
 
     <LinearLayout
         android:id="@+id/quantity_layout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:orientation="horizontal">
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="35dp"
+        android:layout_marginEnd="43dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toStartOf="@+id/add_to_cart_button_detail_client"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/product_unit_price_detail_client">
 
-        <Button
-            android:id="@+id/decrement_button"
+        <ImageButton
+            android:id="@+id/decrement_button_detail_client"
             android:layout_width="48dp"
             android:layout_height="48dp"
-            android:background="@drawable/left_rounded_button"
-            android:text="-"
+            android:layout_weight="1"
+            android:backgroundTint="#B8907C"
+            android:contentDescription="@string/decrement_button_pd"
             android:padding="10dp"
-            android:textColor="@color/white" />
+            android:textColor="@color/white"
+            app:srcCompat="@drawable/decrement" />
 
         <TextView
-            android:id="@+id/quantity"
+            android:id="@+id/quantity_detail_client"
             android:layout_width="58dp"
             android:layout_height="48dp"
-            android:background="@drawable/center_rounded_button"
             android:gravity="center"
-            android:padding="10dp"
             android:text="1"
-            android:textColor="@color/white"
-            android:textSize="18sp" />
+            android:textColor="#000000"
+            android:textSize="16sp" />
 
-        <Button
-            android:id="@+id/increment_button"
+        <ImageButton
+            android:id="@+id/increment_button_detail_client"
             android:layout_width="48dp"
             android:layout_height="48dp"
-            android:background="@drawable/right_rounded_button"
-            android:text="+"
+            android:layout_weight="1"
+            android:backgroundTint="#B8907C"
+            android:contentDescription="@string/increment_button_pd"
             android:padding="10dp"
-            android:textColor="@color/white" />
+            android:textColor="@color/white"
+            app:srcCompat="@drawable/increment" />
     </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
 
-    <Button
-        android:id="@+id/add_to_cart_button"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:text="AGREGAR"
-        android:backgroundTint="@color/gray700"
-        android:textColor="@color/white"
-        android:layout_marginTop="20dp"
-        android:layout_toEndOf="@id/quantity_layout" />
-</RelativeLayout>

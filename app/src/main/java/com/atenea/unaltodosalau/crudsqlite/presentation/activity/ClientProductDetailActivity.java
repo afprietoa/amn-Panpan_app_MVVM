@@ -3,6 +3,7 @@ package com.atenea.unaltodosalau.crudsqlite.presentation.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -20,7 +21,8 @@ public class ClientProductDetailActivity extends AppCompatActivity {
     private ClientProductDetailViewModel viewModel;
     private TextView productName, productDescription, productPrice, productQuantity;
     private ImageView productImage;
-    private Button addToCartButton, incrementButton, decrementButton;
+    private Button addToCartButton;
+    private ImageButton incrementButton, decrementButton;
     private Product product;
     private int quantity = 1;
 
@@ -29,14 +31,14 @@ public class ClientProductDetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.client_product_detail);
 
-        productName = findViewById(R.id.product_name);
-        productDescription = findViewById(R.id.product_description);
-        productPrice = findViewById(R.id.product_price);
-        productQuantity = findViewById(R.id.product_quantity);
-        productImage = findViewById(R.id.product_image);
-        addToCartButton = findViewById(R.id.add_to_cart_button);
-        incrementButton = findViewById(R.id.increment_button);
-        decrementButton = findViewById(R.id.decrement_button);
+        productName = findViewById(R.id.text_pricipal_product_detail_client);
+        productDescription = findViewById(R.id.text_product_description_detail_client);
+        productPrice = findViewById(R.id.product_price_detail_client);
+        productQuantity = findViewById(R.id.quantity_detail_client);
+        productImage = findViewById(R.id.img_product_detail_client);
+        addToCartButton = findViewById(R.id.add_to_cart_button_detail_client);
+        incrementButton = findViewById(R.id.increment_button_detail_client);
+        decrementButton = findViewById(R.id.decrement_button_detail_client);
 
         viewModel = new ViewModelProvider(this).get(ClientProductDetailViewModel.class);
 

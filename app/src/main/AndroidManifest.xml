@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
-
     <!-- Permisos -->
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -16,10 +15,18 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CrudSQLite"
         tools:targetApi="31">
-        <!-- Main Activity -->
         <activity
-            android:name=".MainActivity"
-            android:exported="true">
+            android:name=".presentation.activity.ProfileUpdateActivity"
+            android:exported="false" />
+        <activity
+            android:name=".presentation.activity.ProfileDetailActivity"
+            android:exported="false" />
+        <activity
+            android:name=".presentation.activity.RolesActivity"
+            android:exported="false" /> <!-- Main Activity -->
+
+        <activity android:name=".presentation.activity.SplashActivity"
+            android:exported="true"> <!-- Esto permite que la actividad sea lanzada -->
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -35,9 +42,7 @@
             android:label="Create Category" />
         <activity
             android:name=".presentation.activity.CategoryUpdateActivity"
-            android:label="Update Category" />
-
-        <!-- Product Activities -->
+            android:label="Update Category" /> <!-- Product Activities -->
         <activity
             android:name=".presentation.activity.ProductListActivity"
             android:label="Product List" />
@@ -58,7 +63,18 @@
             android:label="Client Product Detail" />
         <activity
             android:name=".presentation.activity.ClientShoppingBagActivity"
-            />
+            android:label="Shopping Bag" />
+        <activity
+            android:name=".presentation.activity.LoginActivity"
+            android:label="Login" />
+        <activity
+            android:name=".presentation.activity.SignUpActivity"
+            android:label="Sign Up" />
+
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
     </application>
 
 </manifest>

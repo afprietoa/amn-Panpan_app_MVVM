@@ -24,7 +24,7 @@ public class ClientCategoryListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.client_category_list);
 
-        recyclerView = findViewById(R.id.category_client_list);
+        recyclerView = findViewById(R.id.category_list_client);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         adapter = new ClientCategoryListAdapter();
         recyclerView.setAdapter(adapter);

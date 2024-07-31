@@ -2,6 +2,7 @@ package com.atenea.unaltodosalau.crudsqlite.domain.model;
 
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
+import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
 import java.io.Serializable;
@@ -36,6 +37,7 @@ public class ShoppingBagProduct implements Serializable {
         this.name = name;
     }
 
+    @Ignore
     public ShoppingBagProduct() {
     }
 

@@ -9,9 +9,9 @@
     <string name="hint_field_category_name">Nombre de la categoria</string>
     <string name="hint_field_category_description">Descripcion</string>
     <string name="alt_category_image">Category Image</string>
-    <string name="btn_category_create">Crear categoria</string>
+    <string name="btn_category_create">Crear Categoria</string>
     <string name="fab_btn_add_category">Add Category</string>
-    <string name="hint_field_product_name">Nombre de la producto</string>
+    <string name="hint_field_product_name">Nombre del producto</string>
     <string name="hint_field_product_description">Descripcion</string>
     <string name="hint_field_product_price">Precio</string>
     <string name="btn_product_create">Crear producto</string>
@@ -45,19 +45,39 @@
     <string name="alt_info_email">Email del perfil</string>
     <string name="alt_info_phone">Telefono del perfil</string>
     <string name="alt_profile_backg">Fondo perfil</string>
-    <string name="txt_profile_name">David Esteban Martinez</string>
+    <string name="txt_profile_name">Luis Garzón</string>
     <string name="label_profile_name">Nombre de usuario</string>
-    <string name="txt_profile_email">david@gmail.com</string>
+    <string name="txt_profile_email">luisgar@gmail.com</string>
     <string name="label_profile_email">Correo electrónico</string>
-    <string name="txt_profile_phone">+57 89494949</string>
-    <string name="label_profile_phone">Teléfono</string>
+    <string name="txt_profile_genre">Masculino</string>
+    <string name="label_profile_genre">Género</string>
     <string name="txt_profile_form_title">ACTUALIZAR</string>
     <string name="hint_field_profile_name">Nombre</string>
     <string name="hint_field_profile_lastname">Apellido</string>
-    <string name="hint_field_profile_phone">Teléfono</string>
+    <string name="hint_field_profile_genre">Género</string>
     <string name="btn_profile_confirm">Confirmar</string>
     <string name="alt_category_create_image">Category Image</string>
     <string name="alt_category_create_name">Nombre de la categoria</string>
     <string name="hint_category_create_name">Descripcion</string>
-    <string name="btn_category_update">Actualizar categoria</string>
+    <string name="btn_category_update">Actualizar Categoria</string>
+    <string name="textvpanpancat_prod">Pan Pan</string>
+    <string name="texvcateglist">Categorias</string>
+    <string name="texvproductlist">Productos</string>
+    <string name="nav_iniciocliente">Inicio</string>
+    <string name="nav_pedidoscliente">Pedidos</string>
+    <string name="nav_ubicacióncliente">Ubicación</string>
+    <string name="nav_perfilcliente">Perfil</string>
+    <string name="textvprodctlistcliente">Productos</string>
+    <string name="decrement_button_pd">btndecrement</string>
+    <string name="increment_button_pd">btnincrement</string>
+    <string name="imgcroissprodCliente">imgcroisant</string>
+    <string name="btn_atras">btnatras</string>
+    <string name="confirmation_image">confimg</string>
+    <string name="desplegable">tipoident</string>
+    <string name="toolbar_category_title">Nueva categoria</string>
+    <string name="toolbar_category_update_title">Actualizar categoria</string>
+    <string name="toolbar_new_product_title">Nuevo producto</string>
+    <string name="toolbar_profileupdate_title">Actualizar perfil</string>
+
+
 </resources>

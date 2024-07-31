@@ -1,58 +1,64 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#F7F6ED">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:background="?attr/colorPrimary"
+        android:background="#90531D"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         app:navigationIcon="@drawable/ic_arrow_back"
         app:title="Mi Pago"
-        app:titleTextColor="@color/white"/>
+        app:titleTextColor="@color/white" />
 
-    <!-- Número de la tarjeta -->
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/card_number_layout"
-        android:layout_width="match_parent"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
+        android:layout_marginTop="35dp"
         android:layout_marginEnd="20dp"
-        android:layout_marginTop="10dp"
-        android:hint="Numero de la tarjeta"
-        android:layout_below="@id/toolbar"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        android:hint="Número de la tarjeta"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbar">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/card_number"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:drawableStart="@drawable/ic_settings"
+            android:drawableStart="@drawable/ic_setings"
             android:drawablePadding="10dp"
             android:inputType="number" />
     </com.google.android.material.textfield.TextInputLayout>
 
-    <!-- Año y mes de expiración -->
     <LinearLayout
         android:id="@+id/expiration_year_layout"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
         android:layout_marginTop="10dp"
-        android:layout_below="@id/card_number_layout"
-        android:orientation="horizontal">
+        android:layout_marginEnd="20dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/card_number_layout">
 
         <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:hint="Año de expiracion YYYY"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+            android:hint="Año de expiración YYYY">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/expiration_year"
@@ -68,11 +74,11 @@
             android:layout_height="match_parent" />
 
         <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:hint="Mes de expiracion MM"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+            android:hint="Mes de expiración MM">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/expiration_month"
@@ -84,17 +90,18 @@
         </com.google.android.material.textfield.TextInputLayout>
     </LinearLayout>
 
-    <!-- Nombre del titular -->
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/card_holder_name_layout"
-        android:layout_width="match_parent"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_below="@id/expiration_year_layout"
         android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
         android:layout_marginTop="10dp"
+        android:layout_marginEnd="20dp"
         android:hint="Nombre del titular"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/expiration_year_layout">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/card_holder_name"
@@ -105,17 +112,18 @@
             android:inputType="text" />
     </com.google.android.material.textfield.TextInputLayout>
 
-    <!-- Código de seguridad -->
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/security_code_layout"
-        android:layout_width="match_parent"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_below="@id/card_holder_name_layout"
         android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
         android:layout_marginTop="10dp"
-        android:hint="Codigo de seguridad"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        android:layout_marginEnd="20dp"
+        android:hint="Código de seguridad"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/card_holder_name_layout">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/security_code"
@@ -126,39 +134,41 @@
             android:inputType="numberPassword" />
     </com.google.android.material.textfield.TextInputLayout>
 
-    <!-- Tipo de identificación -->
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/identification_type_layout"
-        android:layout_width="match_parent"
+        style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_below="@id/security_code_layout"
         android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
         android:layout_marginTop="10dp"
-        tools:visibility="visible"
-        android:visibility="gone"
-        style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu">
+        android:layout_marginEnd="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/security_code_layout">
 
         <AutoCompleteTextView
             android:id="@+id/identification_type"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:drawableStart="@drawable/ic_copyright"
+            android:backgroundTint="#E9E0D5"
+            android:contentDescription="@string/desplegable"
             android:drawablePadding="10dp"
-            android:hint="Tipo de identificacion"/>
+            android:hint="Tipo de identificación" />
+
     </com.google.android.material.textfield.TextInputLayout>
 
-    <!-- Número de identificación -->
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/identification_number_layout"
-        android:layout_width="match_parent"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
         android:layout_marginTop="10dp"
-        android:layout_below="@id/identification_type_layout"
-        android:hint="Numero de identificacion"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        android:layout_marginEnd="20dp"
+        android:hint="Número de identificación"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/identification_type_layout">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/identification_number"
@@ -169,15 +179,17 @@
             android:inputType="number" />
     </com.google.android.material.textfield.TextInputLayout>
 
-    <!-- Botón Continuar -->
     <Button
         android:id="@+id/continue_button"
-        style="@style/Widget.MaterialComponents.Button"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_marginTop="20dp"
-        android:layout_margin="20dp"
-        android:text="Continuar" />
+        android:layout_width="303dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="108dp"
+        android:backgroundTint="#5B4850"
+        android:fontFamily="@font/open_sans_semibold"
+        android:text="Continuar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.491"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/identification_number_layout" />
 
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

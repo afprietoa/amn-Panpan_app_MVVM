@@ -1,11 +1,8 @@
-<!-- res/layout/activity_products_by_category.xml -->
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:padding="16dp">
 
-    <ListView
-        android:id="@+id/products_by_category_list"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
-</RelativeLayout>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="10dp">
+
+</androidx.constraintlayout.widget.ConstraintLayout>

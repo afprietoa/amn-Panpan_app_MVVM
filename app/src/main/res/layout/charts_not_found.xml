@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F7F6ED">
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/animationView"
+        android:layout_width="378dp"
+        android:layout_height="285dp"
+        android:layout_marginTop="92dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.484"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        app:lottie_rawRes="@raw/chart_anim" />
+
+    <TextView
+        android:id="@+id/textView_message_location2"
+        android:layout_width="311dp"
+        android:layout_height="151dp"
+        android:layout_marginTop="28dp"
+        android:text="Estamos preparando una función de estadísticas especialmente para ti. Pronto podrás acceder a información valiosa.\n\n Gracias por tu paciencia."
+        android:textAlignment="center"
+        android:textSize="16sp"
+        app:layout_constraintTop_toBottomOf="@+id/textView_message_charts"
+        tools:layout_editor_absoluteX="50dp" />
+
+    <TextView
+        android:id="@+id/textView_message_charts"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:text="¡Estadísticas en Proceso!"
+        android:textAlignment="center"
+        android:textColor="#45373D"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@+id/animationView"
+        tools:layout_editor_absoluteX="69dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

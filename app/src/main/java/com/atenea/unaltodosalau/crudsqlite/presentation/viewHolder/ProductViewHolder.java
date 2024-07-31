@@ -18,12 +18,12 @@ public class ProductViewHolder extends BaseViewHolder {
 
     public ProductViewHolder(@NonNull View itemView) {
         super(itemView);
-        txtName = itemView.findViewById(R.id.product_name);
-        txtDescription = itemView.findViewById(R.id.product_description);
-        txtPrice = itemView.findViewById(R.id.product_price);
-        imgProduct = itemView.findViewById(R.id.product_image);
-        btnEdit = itemView.findViewById(R.id.edit_product_button);
-        btnDelete = itemView.findViewById(R.id.delete_product_button);
+        txtName = itemView.findViewById(R.id.text_product_list_item_admin);
+        txtDescription = itemView.findViewById(R.id.product_description_list_item_admin);
+        txtPrice = itemView.findViewById(R.id.product_price_list_item_admin);
+        imgProduct = itemView.findViewById(R.id.image_product_list_item_admin);
+        btnEdit = itemView.findViewById(R.id.edit_product_button_list_item_admin);
+        btnDelete = itemView.findViewById(R.id.delete_product_button_list_item_admin);
     }
 
     public void bind(Product product, ProductListAdapter.OnItemClickListener listener) {

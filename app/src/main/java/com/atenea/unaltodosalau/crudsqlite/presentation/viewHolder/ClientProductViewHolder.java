@@ -19,10 +19,10 @@ public class ClientProductViewHolder extends RecyclerView.ViewHolder {
 
     public ClientProductViewHolder(@NonNull View itemView) {
         super(itemView);
-        txtName = itemView.findViewById(R.id.product_client_name);
-        txtDescription = itemView.findViewById(R.id.product_client_description);
-        txtPrice = itemView.findViewById(R.id.product_client_price);
-        imgProduct = itemView.findViewById(R.id.product_client_image);
+        txtName = itemView.findViewById(R.id.product_item_client_name1);
+        txtDescription = itemView.findViewById(R.id.product_item_client_description1);
+        txtPrice = itemView.findViewById(R.id.product_item_client_price1);
+        imgProduct = itemView.findViewById(R.id.product_item_client_image1);
     }
 
     public void bind(Product product, ClientProductListAdapter.OnItemClickListener listener) {

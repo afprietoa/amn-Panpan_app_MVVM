@@ -17,6 +17,7 @@ import androidx.lifecycle.ViewModelProvider;
 import com.atenea.unaltodosalau.crudsqlite.R;
 import com.atenea.unaltodosalau.crudsqlite.domain.model.Category;
 import com.atenea.unaltodosalau.crudsqlite.presentation.viewModel.CategoryViewModel;
+import com.bumptech.glide.Glide;
 
 public class CategoryUpdateActivity extends AppCompatActivity {
     private CategoryViewModel categoryViewModel;
@@ -44,8 +45,10 @@ public class CategoryUpdateActivity extends AppCompatActivity {
         if (category != null) {
             etName.setText(category.getName());
             etDescription.setText(category.getDescription());
-            imageUri = Uri.parse(category.getImage());
-            imgCategory.setImageURI(imageUri);
+            //imageUri = Uri.parse(category.getImage());
+            int imageResId = Integer.parseInt(category.getImage());
+            Glide.with(this).load(imageResId).into(imgCategory);
+
         }
 
         imgCategory.setOnClickListener(v -> {

@@ -32,8 +32,8 @@ public class ProductListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.admin_product_list);
 
-        recyclerView = findViewById(R.id.product_list);
-        fabAddProduct = findViewById(R.id.add_product_button);
+        recyclerView = findViewById(R.id.product_list_admin);
+        fabAddProduct = findViewById(R.id.add_product_button_admin);
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         adapter = new ProductListAdapter();

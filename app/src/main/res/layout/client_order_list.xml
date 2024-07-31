@@ -1,13 +1,50 @@
-<!-- res/layout/activity_order_list.xml -->
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp">
+    android:background="#F8F7EE">
 
-    <ListView
-        android:id="@+id/order_list"
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="44dp"
+        android:text="Lista de Pedidos"
+        android:textColor="#45373D"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/order_product_recycler_view"
+        android:layout_width="344dp"
+        android:layout_height="531dp"
+        android:layout_marginBottom="32dp"
+        android:dividerHeight="1dp"
+        app:layout_constraintBottom_toTopOf="@+id/barnavadm"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.477"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/barnavadm"
+        style="@style/MyBottomNavigationView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:divider="@color/darker_gray"
-        android:dividerHeight="1dp"/>
-</RelativeLayout>
+        android:layout_height="65dp"
+        android:layout_alignParentBottom="true"
+        android:background="#90531D"
+        app:itemIconSize="@dimen/bottom_navigation_icon_size"
+        app:itemIconTint="@drawable/fientecbarra"
+        app:itemTextColor="#FFFEF5"
+        app:labelVisibilityMode="labeled"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:menu="@menu/barnav_menu_adm" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
