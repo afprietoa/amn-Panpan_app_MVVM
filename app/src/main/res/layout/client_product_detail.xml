@@ -6,6 +6,7 @@
     android:background="#F8F7EE">
 
 
+
     <ImageView
         android:id="@+id/img_product_detail_client"
         android:layout_width="411dp"
@@ -18,12 +19,24 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+
+    <ImageButton
+        android:id="@+id/imageBtn_productClient_detail"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="6dp"
+        android:background="@android:color/transparent"
+        android:contentDescription="@string/btn_atras"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/baseline_arrow_back_24white" />
+
     <TextView
         android:id="@+id/text_pricipal_product_detail_client"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="34dp"
+        android:layout_marginTop="45dp"
         android:layout_marginEnd="24dp"
         android:fontFamily="@font/poppins_medium"
         android:text="Baggett"
@@ -72,7 +85,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/product_price_detail_client"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="38dp"
         android:layout_marginEnd="24dp"
         android:text="Tu orden"
         android:textColor="#45373D"
@@ -89,7 +102,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/order_info_detail_client"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="13dp"
         android:layout_marginEnd="24dp"
         android:text="Cantidad: 1"
         android:textColor="#262525"
@@ -104,7 +117,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/product_quantity_detail_client"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="4dp"
+        android:layout_marginTop="6dp"
         android:layout_marginEnd="24dp"
         android:text="Precio C/U: $ 3.500"
         android:textColor="#262525"
@@ -117,7 +130,7 @@
         android:id="@+id/add_to_cart_button_detail_client"
         android:layout_width="154dp"
         android:layout_height="48dp"
-        android:layout_marginTop="35dp"
+        android:layout_marginTop="46dp"
         android:layout_marginEnd="24dp"
         android:layout_toEndOf="@id/quantity_layout"
         android:backgroundTint="#5B4850"
@@ -131,7 +144,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="25dp"
-        android:layout_marginTop="35dp"
+        android:layout_marginTop="46dp"
         android:layout_marginEnd="43dp"
         android:orientation="horizontal"
         app:layout_constraintEnd_toStartOf="@+id/add_to_cart_button_detail_client"

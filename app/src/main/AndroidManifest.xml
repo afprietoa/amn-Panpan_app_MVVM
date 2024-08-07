@@ -2,8 +2,12 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
     <!-- Permisos -->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+
     <uses-permission android:name="android.permission.INTERNET" />
+
 
     <application
         android:allowBackup="true"
@@ -15,6 +19,25 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CrudSQLite"
         tools:targetApi="31">
+
+        <!-- Main Activity -->
+        <activity
+            android:name=".presentation.activity.SplashActivity"
+            android:exported="true">
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!-- Admin Activities -->
+        <activity
+            android:name=".presentation.activity.BarnavAdminActivity"
+            android:exported="false" />
+        <activity
+            android:name=".presentation.activity.AdminOrdersList"
+            android:exported="false" />
         <activity
             android:name=".presentation.activity.ProfileUpdateActivity"
             android:exported="false" />
@@ -22,59 +45,87 @@
             android:name=".presentation.activity.ProfileDetailActivity"
             android:exported="false" />
         <activity
-            android:name=".presentation.activity.RolesActivity"
-            android:exported="false" /> <!-- Main Activity -->
-
-        <activity android:name=".presentation.activity.SplashActivity"
-            android:exported="true"> <!-- Esto permite que la actividad sea lanzada -->
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-
-        <!-- Category Activities -->
-        <activity
             android:name=".presentation.activity.CategoryListActivity"
-            android:label="Category List" />
+            android:label="Category List"
+            android:exported="false" />
         <activity
             android:name=".presentation.activity.CategoryCreateActivity"
-            android:label="Create Category" />
+            android:label="Create Category"
+            android:exported="false" />
         <activity
             android:name=".presentation.activity.CategoryUpdateActivity"
-            android:label="Update Category" /> <!-- Product Activities -->
+            android:label="Update Category"
+            android:exported="false" />
         <activity
             android:name=".presentation.activity.ProductListActivity"
-            android:label="Product List" />
+            android:label="Product List"
+            android:exported="false" />
         <activity
             android:name=".presentation.activity.ProductCreateActivity"
-            android:label="Create Product" />
+            android:label="Create Product"
+            android:exported="false" />
         <activity
             android:name=".presentation.activity.ProductUpdateActivity"
-            android:label="Update Product" />
+            android:label="Update Product"
+            android:exported="false" />
+
+        <activity android:name=".presentation.activity.ChartsNotFound" />
+
+
+
+
+        <!-- Client Activities -->
+        <activity
+            android:name=".presentation.activity.BarnavClientActivity"
+            android:exported="false" />
+        <activity
+            android:name=".presentation.activity.ClientOrderList"
+            android:exported="false" />
+        <activity
+            android:name=".presentation.activity.ProfileUpdateClientActivity"
+            android:exported="false" />
+        <activity
+            android:name=".presentation.activity.ProfileInfoClientActivity"
+            android:exported="false" />
+        <activity
+            android:name=".presentation.activity.LocationClientActivity"
+            android:exported="false" />
         <activity
             android:name=".presentation.activity.ClientCategoryListActivity"
-            android:label="Client Category List" />
+            android:label="Client Category List"
+            android:exported="false" />
         <activity
             android:name=".presentation.activity.ClientProductListActivity"
-            android:label="Client Product List" />
+            android:label="Client Product List"
+            android:exported="false" />
         <activity
             android:name=".presentation.activity.ClientProductDetailActivity"
-            android:label="Client Product Detail" />
+            android:label="Client Product Detail"
+            android:exported="false" />
         <activity
             android:name=".presentation.activity.ClientShoppingBagActivity"
-            android:label="Shopping Bag" />
+            android:label="Shopping Bag"
+            android:exported="false" />
+
+        <!-- Authentication Activities -->
         <activity
             android:name=".presentation.activity.LoginActivity"
-            android:label="Login" />
+            android:label="Login"
+            android:exported="false" />
         <activity
             android:name=".presentation.activity.SignUpActivity"
-            android:label="Sign Up" />
+            android:label="Sign Up"
+            android:exported="false" />
 
+
+
+        <!-- Roles Activity -->
+        <activity
+            android:name=".presentation.activity.RolesActivity"
+            android:exported="false" />
 
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
     </application>
-
 </manifest>

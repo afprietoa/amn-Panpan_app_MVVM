@@ -3,6 +3,7 @@ package com.atenea.unaltodosalau.crudsqlite.presentation.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
@@ -19,7 +20,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.List;
 
-public class CategoryListActivity extends AppCompatActivity {
+public class CategoryListActivity extends BarnavAdminActivity {
     private CategoryViewModel categoryViewModel;
     private RecyclerView recyclerView;
     private CategoryListAdapter adapter;
@@ -29,6 +30,7 @@ public class CategoryListActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.admin_category_list);
+        setupBottomNavigation();
         Log.d("CategoryListActivity", "Activity created");
 
         recyclerView = findViewById(R.id.category_list_admin);
@@ -84,4 +86,29 @@ public class CategoryListActivity extends AppCompatActivity {
             startActivity(intent);
         });
     }
+
+    @Override
+    protected void handleNavigationItem(int itemId) {
+
+        Intent intent = null;
+
+        if (itemId == R.id.nav_homeadm) {
+            Toast.makeText(CategoryListActivity.this, "Inicio", Toast.LENGTH_LONG).show();
+            intent = new Intent(CategoryListActivity.this, CategoryListActivity.class);
+        } else if (itemId == R.id.nav_ordersadm) {
+            Toast.makeText(CategoryListActivity.this, "Pedidos", Toast.LENGTH_LONG).show();
+            intent = new Intent(CategoryListActivity.this, AdminOrdersList.class);
+        } else if (itemId == R.id.nav_estadisticas) {
+            Toast.makeText(CategoryListActivity.this, "Estadisticas", Toast.LENGTH_LONG).show();
+            intent = new Intent(CategoryListActivity.this, ChartsNotFound.class);
+        } else if (itemId == R.id.nav_profileadm) {
+            Toast.makeText(CategoryListActivity.this, "Perfil", Toast.LENGTH_LONG).show();
+            intent = new Intent(CategoryListActivity.this, ProfileDetailActivity.class);
+        }
+
+        if (intent != null) {
+            startActivity(intent);
+        }
+    }
 }
+

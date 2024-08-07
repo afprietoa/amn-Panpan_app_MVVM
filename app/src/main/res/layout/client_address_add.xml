@@ -8,7 +8,7 @@
 
 
     <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
+        android:id="@+id/toolbar_new_direction"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#90531D"
@@ -22,18 +22,20 @@
 
     <LinearLayout
         android:id="@+id/animationLayout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="350dp"
+        android:layout_height="240dp"
         android:orientation="vertical"
-        app:layout_constraintTop_toBottomOf="@id/toolbar"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/cardView"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/cardView">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar_new_direction">
 
         <com.airbnb.lottie.LottieAnimationView
             android:id="@+id/animationView"
             android:layout_width="385dp"
             android:layout_height="779dp"
+            android:layout_marginTop="-250dp"
+       android:layout_marginStart="-20dp"
             app:lottie_autoPlay="true"
             app:lottie_loop="true"
             app:lottie_rawRes="@raw/add_direction" />
@@ -61,11 +63,11 @@
                 android:id="@+id/address_input"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
                 android:drawableStart="@drawable/ic_menu_edit"
                 android:hint="Dirección"
-                android:padding="10dp"
                 android:minHeight="48dp"
-                android:layout_marginTop="30dp"/>
+                android:padding="10dp" />
 
             <EditText
                 android:id="@+id/neighborhood_input"

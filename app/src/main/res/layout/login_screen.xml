@@ -7,6 +7,7 @@
     android:background="@drawable/background_with_pattern">
 
 
+
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/login_fragment_card"
         android:layout_width="0dp"

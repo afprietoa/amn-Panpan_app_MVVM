@@ -45,8 +45,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="6dp"
                 android:layout_marginTop="6dp"
-                android:text="Pan francés crujiente
-                y suave."
+                android:text="Pan francés crujiente&#10;y suave."
                 android:textColor="#757575"
                 android:textSize="14sp" />
 

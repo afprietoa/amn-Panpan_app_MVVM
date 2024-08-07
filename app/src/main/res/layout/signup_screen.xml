@@ -6,6 +6,19 @@
     android:layout_height="match_parent"
     android:background="@drawable/background_with_pattern">
 
+
+    <ImageButton
+        android:id="@+id/imageBtn_signup_screen"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="36dp"
+        android:background="@android:color/transparent"
+        android:contentDescription="@string/btn_atras"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/baseline_arrow_back_24" />
+
     <!-- Logo de la aplicación -->
 
     <!-- Card View para el formulario de registro -->

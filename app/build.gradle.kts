@@ -45,8 +45,8 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.3")
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.4.3")
     // Glide
-    implementation("com.github.bumptech.glide:glide:4.12.0")
-    annotationProcessor("com.github.bumptech.glide:compiler:4.12.0")
+    implementation ("com.github.bumptech.glide:glide:4.13.2")
+    annotationProcessor ("com.github.bumptech.glide:compiler:4.13.2")
     // Other dependencies
     implementation(libs.appcompat)
     implementation(libs.material)
@@ -58,10 +58,12 @@ dependencies {
     implementation ("com.airbnb.android:lottie:6.0.0")
     // import Firebase BoM
     implementation(platform("com.google.firebase:firebase-bom:33.1.2"))
-    // Firebase Authentication and Firestore
+    // Firebase Authentication and Firestore, Storage
     implementation("com.google.firebase:firebase-auth")
     implementation("com.google.firebase:firebase-firestore")
     implementation("com.google.firebase:firebase-database:21.0.0")
+    implementation ("com.google.firebase:firebase-storage:19.2.0")
+
 
 
 }

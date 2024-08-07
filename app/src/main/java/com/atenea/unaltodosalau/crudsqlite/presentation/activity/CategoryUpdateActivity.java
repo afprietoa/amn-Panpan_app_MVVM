@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -12,6 +13,7 @@ import android.widget.Toast;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.atenea.unaltodosalau.crudsqlite.R;
@@ -32,6 +34,21 @@ public class CategoryUpdateActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.admin_category_update);
+
+        // botón de navegación en el Toolbar
+        Toolbar toolbar = findViewById(R.id.toolbar_update_category);
+        setSupportActionBar(toolbar);
+
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Intent para iniciar ProfileDetailActivity
+                Intent intent = new Intent(CategoryUpdateActivity.this, CategoryListActivity.class);
+                startActivity(intent);
+                finish(); //  finaliza la actividad actual si no secquiere que el usuario vuelva a ella
+            }
+        });
+
 
         etName = findViewById(R.id.category_update_name);
         etDescription = findViewById(R.id.category_update_description);

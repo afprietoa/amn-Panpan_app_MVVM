@@ -10,11 +10,11 @@
 
 
     <ImageButton
-        android:id="@+id/atras_button"
+        android:id="@+id/atras_button_client_order_detail_product"
         android:layout_width="48dp"
         android:layout_height="48dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="43dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="30dp"
         android:layout_weight="1"
         android:background="?attr/selectableItemBackgroundBorderless"
         android:contentDescription="@string/btn_atras"
@@ -29,7 +29,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="92dp"
-        android:layout_marginTop="52dp"
+        android:layout_marginTop="40dp"
         android:text=" Detalles de Pedidos"
         android:textColor="#45373D"
         android:textSize="24sp"

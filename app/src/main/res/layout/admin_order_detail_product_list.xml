@@ -9,7 +9,7 @@
     tools:layout_editor_absoluteY="-41dp">
 
     <ImageButton
-        android:id="@+id/atras_button"
+        android:id="@+id/atras_button_admin_order_detail"
         android:layout_width="48dp"
         android:layout_height="48dp"
         android:layout_marginStart="10dp"

@@ -7,7 +7,7 @@
     android:background="#F7F6ED">
 
     <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
+        android:id="@+id/toolbar_mi_pago"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:background="#90531D"
@@ -30,7 +30,7 @@
         android:hint="Número de la tarjeta"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/toolbar">
+        app:layout_constraintTop_toBottomOf="@id/toolbar_mi_pago">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/card_number"

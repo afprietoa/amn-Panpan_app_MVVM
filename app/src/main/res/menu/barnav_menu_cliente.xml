@@ -15,7 +15,7 @@
         app:showAsAction="withText"/>
 
     <item
-        android:id="@+id/navcliente_ubicación"
+        android:id="@+id/navcliente_ubicacion"
         android:icon="@drawable/ubicacionbarcliente"
         android:title="@string/nav_ubicacióncliente"
         app:showAsAction="withText" />

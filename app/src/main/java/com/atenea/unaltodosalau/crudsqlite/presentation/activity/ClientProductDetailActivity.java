@@ -2,6 +2,7 @@ package com.atenea.unaltodosalau.crudsqlite.presentation.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -25,11 +26,27 @@ public class ClientProductDetailActivity extends AppCompatActivity {
     private ImageButton incrementButton, decrementButton;
     private Product product;
     private int quantity = 1;
+    private ImageButton atrasButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.client_product_detail);
+
+        // Inicialización del botón "Atrás"
+        atrasButton = findViewById(R.id.imageBtn_productClient_detail);
+
+        // Configuración del clic del botón "Atrás"
+        atrasButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(ClientProductDetailActivity.this, ClientProductListActivity.class);
+                startActivity(intent);
+                finish(); // Finaliza esta actividad si se desea que el usuario vuelva a ella
+            }
+        });
+
 
         productName = findViewById(R.id.text_pricipal_product_detail_client);
         productDescription = findViewById(R.id.text_product_description_detail_client);

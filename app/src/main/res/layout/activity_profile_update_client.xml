@@ -2,12 +2,14 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F7F6ED">
+    android:background="#F7F6ED"
+    tools:context=".presentation.activity.ProfileUpdateClientActivity">
 
     <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar_update_profile"
+        android:id="@+id/toolbar_update_profile_client"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#90531D"
@@ -20,8 +22,9 @@
         app:titleTextColor="@color/white" />
 
 
+
     <ImageView
-        android:id="@+id/profile_image"
+        android:id="@+id/profile_image_client"
         android:layout_width="150dp"
         android:layout_height="150dp"
         android:layout_marginTop="40dp"
@@ -29,7 +32,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar_update_profile" />
+        app:layout_constraintTop_toBottomOf="@+id/toolbar_update_profile_client" />
 
     <androidx.cardview.widget.CardView
         android:layout_width="347dp"
@@ -42,7 +45,7 @@
         app:cardCornerRadius="40dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/profile_image">
+        app:layout_constraintTop_toBottomOf="@+id/profile_image_client">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -61,7 +64,7 @@
                 android:textStyle="bold" />
 
             <EditText
-                android:id="@+id/edt_profile_update_name"
+                android:id="@+id/edt_profile_update_name_client"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="15dp"
@@ -74,7 +77,7 @@
                 android:padding="10dp" />
 
             <EditText
-                android:id="@+id/edt_profile_update_email"
+                android:id="@+id/edt_profile_update_email_client"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="15dp"
@@ -89,7 +92,7 @@
 
             <!-- Grupo de radio botones para seleccionar género -->
             <RadioGroup
-                android:id="@+id/profile_radio_group"
+                android:id="@+id/profile_radio_group_client"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="-6dp"
@@ -104,14 +107,14 @@
                     android:orientation="horizontal">
 
                     <RadioButton
-                        android:id="@+id/profile_radio_male"
+                        android:id="@+id/profile_radio_male_client"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Masculino"
                         android:textSize="14sp" />
 
                     <RadioButton
-                        android:id="@+id/profile_radio_female"
+                        android:id="@+id/profile_radio_female_client"
                         android:layout_width="109dp"
                         android:layout_height="match_parent"
                         android:layout_marginStart="70dp"
@@ -121,7 +124,7 @@
 
                 <!-- Radio botón para Otro -->
                 <RadioButton
-                    android:id="@+id/profile_radio_other"
+                    android:id="@+id/profile_radio_other_client"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="1dp"
@@ -131,7 +134,7 @@
 
 
             <Button
-                android:id="@+id/btn_profile_confirm"
+                android:id="@+id/btn_profile_confirm_client"
                 android:layout_width="235dp"
                 android:layout_height="48dp"
                 android:layout_marginTop="23dp"
@@ -145,6 +148,3 @@
     </androidx.cardview.widget.CardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-

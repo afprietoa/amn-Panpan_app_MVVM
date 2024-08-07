@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
@@ -36,11 +37,26 @@ public class SignUpActivity extends AppCompatActivity {
     private TextView txtLogin;
     private RadioGroup radioGroup;
     private RadioButton selectedGender;
+    private ImageButton atrasButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.signup_screen);
+
+        // Inicialización del botón "Atrás"
+        atrasButton = findViewById(R.id.imageBtn_signup_screen);
+
+        // Configuración del clic del botón "Atrás"
+        atrasButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(SignUpActivity.this, RolesActivity.class);
+                startActivity(intent);
+                finish(); // Finaliza esta actividad si se desea que el usuario vuelva a ella
+            }
+        });
 
 
         /**Inicio de Firebase Authentication y Firestore*/

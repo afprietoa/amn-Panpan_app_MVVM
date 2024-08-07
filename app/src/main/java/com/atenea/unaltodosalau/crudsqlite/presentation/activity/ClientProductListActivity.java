@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
 
@@ -26,11 +27,26 @@ public class ClientProductListActivity extends AppCompatActivity {
     private EditText searchBar;
     private ImageButton shoppingCartIcon;
     private int categoryId;
+    private ImageButton atrasButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.client_product_list);
+
+        // Inicialización del botón "Atrás"
+        atrasButton = findViewById(R.id.imageBtn_productClient);
+
+        // Configuración del clic del botón "Atrás"
+        atrasButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(ClientProductListActivity.this, ClientCategoryListActivity.class);
+                startActivity(intent);
+                finish(); // Finaliza esta actividad si se desea que el usuario vuelva a ella
+            }
+        });
 
         recyclerView = findViewById(R.id.product_client_list);
         searchBar = findViewById(R.id.search_bar);

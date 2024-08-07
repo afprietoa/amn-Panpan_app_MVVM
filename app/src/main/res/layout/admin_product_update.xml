@@ -7,7 +7,7 @@
     android:background="#F8F7EE">
 
     <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar_update_category"
+        android:id="@+id/toolbar_update_product"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#90531D"
@@ -16,7 +16,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:navigationIcon="@drawable/ic_arrow_back"
-        app:title="@string/toolbar_category_update_title"
+        app:title="Actualizar Producto"
         app:titleTextColor="@color/white" />
 
     <EditText
@@ -96,7 +96,7 @@
         android:contentDescription="@string/alt_product_update_image2"
         android:src="@drawable/image_add"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar_update_category" />
+        app:layout_constraintTop_toBottomOf="@+id/toolbar_update_product" />
 
     <ImageView
         android:id="@+id/product_update_image1"
@@ -109,6 +109,6 @@
         android:src="@drawable/image_add"
         app:layout_constraintEnd_toStartOf="@+id/product_update_image2"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar_update_category" />
+        app:layout_constraintTop_toBottomOf="@+id/toolbar_update_product" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

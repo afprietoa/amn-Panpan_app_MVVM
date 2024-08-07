@@ -4,7 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F7F6ED">
+    android:background="#F7F6ED"
+    android:id="@+id/constraintLayout">
+
+
 
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/animationView"
@@ -15,7 +18,7 @@
         app:layout_constraintHorizontal_bias="0.484"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.179"
+        app:layout_constraintVertical_bias="0.152"
         app:lottie_autoPlay="true"
         app:lottie_loop="true"
         app:lottie_rawRes="@raw/location_client" />
@@ -24,22 +27,43 @@
         android:id="@+id/textView_message_location2"
         android:layout_width="311dp"
         android:layout_height="151dp"
+        android:layout_marginTop="24dp"
         android:text="Estamos preparando una función de ubicación especialmente para ti. Pronto podrás acceder a información valiosa.\n\n Agradecemos tu paciencia mientras finalizamos esta emocionante mejora."
         android:textAlignment="center"
         android:textSize="16sp"
-        tools:layout_editor_absoluteX="50dp"
-        tools:layout_editor_absoluteY="524dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView_message_charts" />
 
     <TextView
         android:id="@+id/textView_message_charts"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
         android:text="¡Próximamente:\n\Ubicacion Detallada!"
         android:textAlignment="center"
         android:textColor="#45373D"
         android:textSize="24sp"
         android:textStyle="bold"
-        tools:layout_editor_absoluteX="77dp"
-        tools:layout_editor_absoluteY="436dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/animationView" />
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/barnavcliente"
+        style="@style/MyBottomNavigationView"
+        android:layout_width="match_parent"
+        android:layout_height="65dp"
+        android:background="#90531D"
+        app:itemIconSize="@dimen/bottom_navigation_icon_size"
+        app:itemIconTint="@drawable/fientecbarra"
+        app:itemTextColor="#FFFEF5"
+        app:labelVisibilityMode="labeled"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:menu="@menu/barnav_menu_cliente" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

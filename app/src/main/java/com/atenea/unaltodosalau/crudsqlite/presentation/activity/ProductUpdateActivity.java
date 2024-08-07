@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -12,6 +13,7 @@ import android.widget.Toast;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import com.atenea.unaltodosalau.crudsqlite.R;
 import com.atenea.unaltodosalau.crudsqlite.domain.model.Product;
@@ -31,6 +33,20 @@ public class ProductUpdateActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.admin_product_update);
+
+        // botón de navegación en el Toolbar
+        Toolbar toolbar = findViewById(R.id.toolbar_update_product);
+        setSupportActionBar(toolbar);
+
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Intent para iniciar ProfileDetailActivity
+                Intent intent = new Intent(ProductUpdateActivity.this, ProductListActivity.class);
+                startActivity(intent);
+                finish(); //  finaliza la actividad actual si no se desea que el usuario vuelva a ella
+            }
+        });
 
         etName = findViewById(R.id.product_update_name);
         etDescription = findViewById(R.id.product_update_description);

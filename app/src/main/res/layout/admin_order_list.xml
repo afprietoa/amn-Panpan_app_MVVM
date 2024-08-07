@@ -6,12 +6,14 @@
     android:layout_height="match_parent"
     android:background="#F8F7EE">
 
+
+
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="44dp"
+        android:layout_marginStart="72dp"
+        android:layout_marginTop="38dp"
         android:text="Lista de Pedidos"
         android:textColor="#45373D"
         android:textSize="24sp"
@@ -23,7 +25,7 @@
         android:id="@+id/order_product_recycler_view"
         android:layout_width="344dp"
         android:layout_height="531dp"
-        android:layout_marginBottom="12dp"
+        android:layout_marginBottom="32dp"
         android:dividerHeight="1dp"
         app:layout_constraintBottom_toTopOf="@+id/barnavadm"
         app:layout_constraintEnd_toEndOf="parent"

@@ -2,13 +2,15 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F7F6ED">
+    android:background="#F7F6ED"
+    tools:context=".presentation.activity.ProfileInfoClientActivity">
 
 
     <TextView
-        android:id="@+id/textViewmiperfiladmin"
+        android:id="@+id/textViewmiperfilclient"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="36dp"
@@ -21,7 +23,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/profile_image"
+        android:id="@+id/profile_image_client"
         android:layout_width="148dp"
         android:layout_height="133dp"
         android:layout_marginTop="28dp"
@@ -29,10 +31,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewmiperfiladmin" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewmiperfilclient" />
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/cardView"
+        android:id="@+id/cardView_profile_client"
         android:layout_width="333dp"
         android:layout_height="330dp"
         android:layout_margin="0dp"
@@ -41,10 +43,10 @@
         android:background="@color/white"
         android:backgroundTint="#B3FFFFFF"
         app:cardCornerRadius="40dp"
-        app:layout_constraintBottom_toTopOf="@+id/btncerrarSesion"
+        app:layout_constraintBottom_toTopOf="@+id/btncerrarSesion_client"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/profile_image">
+        app:layout_constraintTop_toBottomOf="@+id/profile_image_client">
 
         <LinearLayout
             android:layout_width="308dp"
@@ -72,7 +74,7 @@
                     android:orientation="vertical">
 
                     <TextView
-                        android:id="@+id/user_name"
+                        android:id="@+id/user_name_client"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:shadowColor="@android:color/transparent"
@@ -107,7 +109,7 @@
                     android:orientation="vertical">
 
                     <TextView
-                        android:id="@+id/user_email"
+                        android:id="@+id/user_email_client"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/txt_profile_email"
@@ -141,7 +143,7 @@
                     android:orientation="vertical">
 
                     <TextView
-                        android:id="@+id/user_gender"
+                        android:id="@+id/user_gender_client"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/txt_profile_genre"
@@ -157,12 +159,12 @@
             </LinearLayout>
 
             <Button
-                android:id="@+id/update_info_button"
+                android:id="@+id/update_info_button_client"
                 android:layout_width="235dp"
                 android:layout_height="48dp"
                 android:layout_marginTop="40dp"
-                android:layout_marginStart="10dp"
                 android:backgroundTint="#5B4850"
+                android:layout_marginStart="10dp"
                 android:fontFamily="@font/open_sans_semibold"
                 android:text="Actualizar Información"
                 android:textColor="@color/white" />
@@ -170,26 +172,8 @@
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/barnavadm"
-        style="@style/MyBottomNavigationView"
-        android:layout_width="match_parent"
-        android:layout_height="65dp"
-        android:layout_alignParentBottom="true"
-        android:background="#90531D"
-        app:itemIconSize="@dimen/bottom_navigation_icon_size"
-        app:itemIconTint="@drawable/fientecbarra"
-        app:itemTextColor="#FFFEF5"
-        app:labelVisibilityMode="labeled"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:menu="@menu/barnav_menu_adm" />
-
-
     <Button
-        android:id="@+id/btncerrarSesion"
+        android:id="@+id/btncerrarSesion_client"
         android:layout_width="153dp"
         android:layout_height="38dp"
         android:layout_marginStart="180dp"
@@ -199,8 +183,26 @@
         android:text="Cerrar Sesión"
         android:textColor="#5B4850"
         android:textSize="14sp"
-        app:layout_constraintBottom_toTopOf="@+id/barnavadm"
+        app:layout_constraintBottom_toTopOf="@+id/barnavcliente"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/barnavcliente"
+        style="@style/MyBottomNavigationView"
+        android:layout_width="match_parent"
+        android:layout_height="65dp"
+        android:background="#90531D"
+        app:itemIconSize="@dimen/bottom_navigation_icon_size"
+        app:itemIconTint="@drawable/fientecbarra"
+        app:itemTextColor="#FFFEF5"
+        app:labelVisibilityMode="labeled"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:menu="@menu/barnav_menu_cliente" />
+
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -7,7 +7,7 @@
     android:background="#F8F7EE">
 
     <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar_new_category"
+        android:id="@+id/toolbar_new_product"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#90531D"
