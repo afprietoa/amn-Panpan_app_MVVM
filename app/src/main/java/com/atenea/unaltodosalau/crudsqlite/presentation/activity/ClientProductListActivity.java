@@ -1,12 +1,17 @@
 package com.atenea.unaltodosalau.crudsqlite.presentation.activity;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -27,10 +32,15 @@ public class ClientProductListActivity extends AppCompatActivity {
     private ImageButton shoppingCartIcon;
     private int categoryId;
 
+    private static final int PERMISSION_REQUEST_CODE = 100;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.client_product_list);
+
+        // Request storage permission for handling gallery images
+        requestStoragePermission();
 
         recyclerView = findViewById(R.id.product_client_list);
         searchBar = findViewById(R.id.search_bar);
@@ -54,7 +64,7 @@ public class ClientProductListActivity extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                viewModel.getProductsByByName(s.toString()).observe(ClientProductListActivity.this, products -> {
+                viewModel.getProductsByName(s.toString()).observe(ClientProductListActivity.this, products -> {
                     adapter.setProducts(products);
                 });
             }
@@ -69,11 +79,35 @@ public class ClientProductListActivity extends AppCompatActivity {
             startActivity(detailIntent);
         });
 
-        // Configurar el click listener para el icono del carrito
         shoppingCartIcon.setOnClickListener(v -> {
             Intent cartIntent = new Intent(ClientProductListActivity.this, ClientShoppingBagActivity.class);
             startActivity(cartIntent);
         });
+    }
 
+    private void requestStoragePermission() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            if (checkSelfPermission(Manifest.permission.READ_MEDIA_IMAGES) == PackageManager.PERMISSION_DENIED) {
+                String[] permissions = {Manifest.permission.READ_MEDIA_IMAGES};
+                requestPermissions(permissions, PERMISSION_REQUEST_CODE);
+            }
+        } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            if (checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_DENIED) {
+                String[] permissions = {Manifest.permission.READ_EXTERNAL_STORAGE};
+                requestPermissions(permissions, PERMISSION_REQUEST_CODE);
+            }
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (requestCode == PERMISSION_REQUEST_CODE) {
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                adapter.notifyDataSetChanged(); // Refresh the adapter to load images
+            } else {
+                Toast.makeText(this, "Permission denied", Toast.LENGTH_SHORT).show();
+            }
+        }
     }
 }

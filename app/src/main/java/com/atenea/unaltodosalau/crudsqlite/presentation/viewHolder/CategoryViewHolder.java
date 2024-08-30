@@ -1,5 +1,6 @@
 package com.atenea.unaltodosalau.crudsqlite.presentation.viewHolder;
 
+import android.app.Activity;
 import android.net.Uri;
 import android.view.View;
 import android.widget.ImageView;
@@ -12,6 +13,10 @@ import com.atenea.unaltodosalau.crudsqlite.core.BaseViewHolder;
 import com.atenea.unaltodosalau.crudsqlite.domain.model.Category;
 import com.atenea.unaltodosalau.crudsqlite.presentation.adapter.CategoryListAdapter;
 import com.bumptech.glide.Glide;
+import com.github.dhaval2404.imagepicker.ImagePicker;
+
+import java.io.FileNotFoundException;
+import java.io.InputStream;
 
 public class CategoryViewHolder extends BaseViewHolder {
     private TextView txtName, txtDescription;
@@ -30,29 +35,34 @@ public class CategoryViewHolder extends BaseViewHolder {
         txtName.setText(category.getName());
         txtDescription.setText(category.getDescription());
         String imageString = category.getImage();
+
         if (imageString != null) {
             try {
-                // If the imageString is an integer (resource ID), load it as a resource
+                // Intentar interpretar el string como un recurso drawable
                 int imageResId = Integer.parseInt(imageString);
-                Glide.with(itemView.getContext()).load(imageResId).into(imgCategory);
+                imgCategory.setImageResource(imageResId);
             } catch (NumberFormatException e) {
-                // If it's not an integer, it should be a URI, extract the number at the end of the URI and load it
+                // Si no es un número, intentar cargarlo como URI desde la galería
                 Uri imageUri = Uri.parse(imageString);
-                String lastSegment = imageUri.getLastPathSegment();
-                if (lastSegment != null) {
-                    try {
-                        int imageId = Integer.parseInt(lastSegment);
-                        Glide.with(itemView.getContext()).load(imageId).into(imgCategory);
-                    } catch (NumberFormatException ex) {
-                        // Log or handle the error when the last segment is not a number
-                        ex.printStackTrace();
-                    }
+                if (imageUri != null && imageUri.getScheme() != null) {
+                    // Usar ImagePicker para cargar la imagen desde la galería
+                    ImagePicker.with((Activity) itemView.getContext())
+                            .crop()                // (Optional) Crop the image (you can customize the crop properties)
+                            .galleryOnly()         // (Optional) Only allow picking images from the gallery
+                            .createIntent(intent -> {
+                                imgCategory.setImageURI(imageUri);
+                                return null; // Return null to avoid launching the intent immediately
+                            });
+                } else {
+                    imgCategory.setImageResource(R.drawable.error_image);
                 }
             }
-
-            btnEdit.setOnClickListener(v -> listener.onEditClick(category));
-            btnDelete.setOnClickListener(v -> listener.onDeleteClick(category));
-            itemView.setOnClickListener(v -> listener.onItemClick(category));
+        } else {
+            imgCategory.setImageResource(R.drawable.error_image); // Imagen por defecto si no hay imagen
         }
+
+        btnEdit.setOnClickListener(v -> listener.onEditClick(category));
+        btnDelete.setOnClickListener(v -> listener.onDeleteClick(category));
+        itemView.setOnClickListener(v -> listener.onItemClick(category));
     }
 }

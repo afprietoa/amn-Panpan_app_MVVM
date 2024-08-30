@@ -1,3 +1,4 @@
+
 plugins {
     alias(libs.plugins.android.application)
     id("com.google.gms.google-services") version "4.4.1" apply true
@@ -21,6 +22,7 @@ android {
     }
 
 
+
     buildTypes {
         release {
             isMinifyEnabled = false
@@ -36,6 +38,8 @@ android {
     }
 }
 
+
+
 dependencies {
     // Room components
     implementation("androidx.room:room-runtime:2.4.3")
@@ -47,6 +51,10 @@ dependencies {
     // Glide
     implementation("com.github.bumptech.glide:glide:4.12.0")
     annotationProcessor("com.github.bumptech.glide:compiler:4.12.0")
+
+    // ImagePicker dependency
+    implementation("com.github.dhaval2404:imagepicker:2.1")
+
     // Other dependencies
     implementation(libs.appcompat)
     implementation(libs.material)
