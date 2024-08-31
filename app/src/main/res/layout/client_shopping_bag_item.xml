@@ -56,7 +56,7 @@
                     android:orientation="horizontal">
 
                     <ImageButton
-                        android:id="@+id/decrement_button_shooping_bag"
+                        android:id="@+id/decrement_button_shopping_bag"
                         android:layout_width="35dp"
                         android:layout_height="35dp"
                         android:layout_weight="1"
@@ -67,10 +67,10 @@
                         app:srcCompat="@drawable/decrement" />
 
                     <TextView
-                        android:id="@+id/quantity_shopping_bag"
+                        android:id="@+id/product_quantity_shopping_bag"
                         android:layout_width="45dp"
                         android:layout_height="35dp"
-                        android:layout_toRightOf="@id/decrement_button_shooping_bag"
+                        android:layout_toRightOf="@id/decrement_button_shopping_bag"
                         android:gravity="center"
                         android:text="1"
                         android:textColor="#000000"
@@ -80,7 +80,8 @@
                         android:id="@+id/increment_button_shopping_bag"
                         android:layout_width="35dp"
                         android:layout_height="35dp"
-                        android:layout_toRightOf="@id/quantity_shopping_bag"
+                        android:minHeight="48dp"
+                        android:layout_toRightOf="@id/product_quantity_shopping_bag"
                         android:layout_weight="1"
                         android:backgroundTint="#B8907C"
                         android:contentDescription="@string/increment_button_pd"

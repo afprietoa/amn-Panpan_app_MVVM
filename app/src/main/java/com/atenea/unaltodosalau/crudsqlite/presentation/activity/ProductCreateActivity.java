@@ -1,24 +1,28 @@
 package com.atenea.unaltodosalau.crudsqlite.presentation.activity;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.atenea.unaltodosalau.crudsqlite.R;
 import com.atenea.unaltodosalau.crudsqlite.domain.model.Product;
 import com.atenea.unaltodosalau.crudsqlite.presentation.viewModel.ProductViewModel;
+import com.github.dhaval2404.imagepicker.ImagePicker;
 
 public class ProductCreateActivity extends AppCompatActivity {
     private ProductViewModel productViewModel;
@@ -27,26 +31,15 @@ public class ProductCreateActivity extends AppCompatActivity {
     private Button btnCreateProduct;
     private Uri imageUri1, imageUri2;
     private int categoryId;
-    private ActivityResultLauncher<Intent> activityResultLauncher;
+    private ActivityResultLauncher<Intent> activityResultLauncher1;
+    private ActivityResultLauncher<Intent> activityResultLauncher2;
+    private static final int PERMISSION_REQUEST_CODE = 100;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.admin_product_create);
-
-        // botón de navegación en el Toolbar
-        Toolbar toolbar = findViewById(R.id.toolbar_new_product);
-        setSupportActionBar(toolbar);
-
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Intent para iniciar ProfileDetailActivity
-                Intent intent = new Intent(ProductCreateActivity.this, ProductListActivity.class);
-                startActivity(intent);
-                finish(); //  finaliza la actividad actual si no secquiere que el usuario vuelva a ella
-            }
-        });
 
         etName = findViewById(R.id.product_create_name);
         etDescription = findViewById(R.id.product_create_description);
@@ -60,16 +53,47 @@ public class ProductCreateActivity extends AppCompatActivity {
 
         productViewModel = new ViewModelProvider(this).get(ProductViewModel.class);
 
+        activityResultLauncher1 = registerForActivityResult(
+                new ActivityResultContracts.StartActivityForResult(),
+                result -> {
+                    if (result.getResultCode() == RESULT_OK && result.getData() != null) {
+                        imageUri1 = result.getData().getData();
+                        imgProduct1.setImageURI(imageUri1);
+                    }
+                }
+        );
+
+        activityResultLauncher2 = registerForActivityResult(
+                new ActivityResultContracts.StartActivityForResult(),
+                result -> {
+                    if (result.getResultCode() == RESULT_OK && result.getData() != null) {
+                        imageUri2 = result.getData().getData();
+                        imgProduct2.setImageURI(imageUri2);
+                    }
+                }
+        );
+
         imgProduct1.setOnClickListener(v -> {
-            Intent intentImage = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-            activityResultLauncher.launch(intent);
+            // Use ImagePicker for the first image
+            ImagePicker.with(this)
+                    .galleryOnly()    // Only gallery images
+                    .crop()           // Optionally, you can add cropping
+                    .createIntent(intentImage -> {
+                        activityResultLauncher1.launch(intentImage);
+                        return null; // Return null to prevent automatic launching
+                    });
         });
 
         imgProduct2.setOnClickListener(v -> {
-            Intent intentImage = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-            activityResultLauncher.launch(intent);
+            // Use ImagePicker for the second image
+            ImagePicker.with(this)
+                    .galleryOnly()    // Only gallery images
+                    .crop()           // Optionally, you can add cropping
+                    .createIntent(intentImage -> {
+                        activityResultLauncher2.launch(intentImage);
+                        return null; // Return null to prevent automatic launching
+                    });
         });
-
         btnCreateProduct.setOnClickListener(v -> {
             String name = etName.getText().toString();
             String description = etDescription.getText().toString();
@@ -100,6 +124,51 @@ public class ProductCreateActivity extends AppCompatActivity {
         if (requestCode == 102 && resultCode == RESULT_OK && data != null) {
             imageUri2 = data.getData();
             imgProduct2.setImageURI(imageUri2);
+        }
+    }
+
+
+    private void requestStoragePermission(int requestCode) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            if (checkSelfPermission(Manifest.permission.READ_MEDIA_IMAGES) == PackageManager.PERMISSION_DENIED) {
+                String[] permissions = {Manifest.permission.READ_MEDIA_IMAGES};
+                requestPermissions(permissions, PERMISSION_REQUEST_CODE);
+            } else {
+                pickImageFromGallery(requestCode);
+            }
+        } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            if (checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_DENIED) {
+                String[] permissions = {Manifest.permission.READ_EXTERNAL_STORAGE};
+                requestPermissions(permissions, PERMISSION_REQUEST_CODE);
+            } else {
+                pickImageFromGallery(requestCode);
+            }
+        } else {
+            pickImageFromGallery(requestCode);
+        }
+    }
+
+    private void pickImageFromGallery(int requestCode) {
+        ImagePicker.with(this)
+                .galleryOnly()    // Solo seleccionar imágenes de la galería
+                .crop()           // Opcional: permite recortar la imagen seleccionada
+                .createIntent(intent -> {
+                    if (requestCode == 1) {
+                        activityResultLauncher1.launch(intent); // Para la primera imagen
+                    } else if (requestCode == 2) {
+                        activityResultLauncher2.launch(intent); // Para la segunda imagen
+                    }
+                    return null; // Retorna null para evitar que se lance automáticamente
+                });
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+            pickImageFromGallery(requestCode);
+        } else {
+            Toast.makeText(this, "Permission denied", Toast.LENGTH_SHORT).show();
         }
     }
 }

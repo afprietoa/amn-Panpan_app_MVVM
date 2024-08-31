@@ -49,12 +49,12 @@
         android:id="@+id/bottom_bar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="51dp"
         android:background="#F8F7EE"
         android:padding="16dp"
-        app:layout_constraintBottom_toTopOf="@+id/barnavcliente"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/shopping_cart_list"
-        tools:layout_editor_absoluteX="16dp">
+        app:layout_constraintVertical_bias="0.235"
+        tools:layout_editor_absoluteX="0dp">
 
         <TextView
             android:id="@+id/total_price"
@@ -83,18 +83,4 @@
     </RelativeLayout>
 
 
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/barnavcliente"
-        style="@style/MyBottomNavigationView"
-        android:layout_width="match_parent"
-        android:layout_height="65dp"
-        android:background="#90531D"
-        app:itemIconSize="@dimen/bottom_navigation_icon_size"
-        app:itemIconTint="@drawable/fientecbarra"
-        app:itemTextColor="#FFFEF5"
-        app:labelVisibilityMode="labeled"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:menu="@menu/barnav_menu_cliente" />
 </androidx.constraintlayout.widget.ConstraintLayout>

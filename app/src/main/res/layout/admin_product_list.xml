@@ -41,7 +41,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="48dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="28dp"
         android:background="#F8F7EE"
         android:fontFamily="@font/open_sans_semibold"
         android:text="@string/texvproductlist"
@@ -56,11 +56,13 @@
         android:id="@+id/product_list_admin"
         android:layout_width="354dp"
         android:layout_height="437dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="40dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.491"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_Product_list_admin" />
+        app:layout_constraintTop_toBottomOf="@+id/text_Product_list_admin"
+        app:layout_constraintVertical_bias="0.092" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/add_product_button_admin"
@@ -68,31 +70,15 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="72dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="36dp"
         android:contentDescription="@string/fab_btn_category_add"
         android:src="@drawable/plus"
         app:backgroundTint="#CB932C"
-        app:layout_constraintBottom_toTopOf="@+id/barnavadm"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/product_list_admin"
-        app:layout_constraintVertical_bias="0.178" />
-
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/barnavadm"
-        style="@style/MyBottomNavigationView"
-        android:layout_width="match_parent"
-        android:layout_height="65dp"
-        android:layout_alignParentBottom="true"
-        android:background="#90531D"
-        app:itemIconSize="@dimen/bottom_navigation_icon_size"
-        app:itemIconTint="@drawable/fientecbarra"
-        app:itemTextColor="#FFFEF5"
-        app:labelVisibilityMode="labeled"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:menu="@menu/barnav_menu_adm" />
+        app:layout_constraintTop_toBottomOf="@+id/product_list_admin"
+        app:layout_constraintVertical_bias="0.0" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

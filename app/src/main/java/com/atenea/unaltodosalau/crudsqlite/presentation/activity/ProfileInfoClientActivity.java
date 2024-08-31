@@ -7,12 +7,9 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-
-import com.atenea.unaltodosalau.crudsqlite.R;
 import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -20,32 +17,62 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.atenea.unaltodosalau.crudsqlite.R;
 
 public class ProfileInfoClientActivity extends AppCompatActivity {
-
     private TextView name_client, email_client, gender_client;
     private Button btn_update_info, btn_logout;
     private FirebaseFirestore db;
     private FirebaseAuth auth;
     private ImageView profile_image_client;
+    private BottomNavigationView bottomNavigationView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
         setContentView(R.layout.activity_profile_info_client);
 
-        /** Inicialización de Firebase */
+        // Inicialización de Firebase
         auth = FirebaseAuth.getInstance();
         db = FirebaseFirestore.getInstance();
 
-        /** Inicialización de variables */
+        // Inicialización de variables
         name_client = findViewById(R.id.user_name_client);
         email_client = findViewById(R.id.user_email_client);
         gender_client = findViewById(R.id.user_gender_client);
         btn_update_info = findViewById(R.id.update_info_button_client);
         btn_logout = findViewById(R.id.btncerrarSesion_client);
         profile_image_client = findViewById(R.id.profile_image_client);
+
+        // Configuración de la barra de navegación
+        bottomNavigationView = findViewById(R.id.barnavcliente);
+        bottomNavigationView.setSelectedItemId(R.id.navcliente_perfil);
+
+        bottomNavigationView.setOnNavigationItemSelectedListener(item -> {
+            int itemId = item.getItemId();
+
+            if (itemId == R.id.navcliente_inicio) {
+                if (!getClass().equals(ClientCategoryListActivity.class)) {
+                    startActivity(new Intent(this, ClientCategoryListActivity.class));
+                }
+                return true;
+            } else if (itemId == R.id.navcliente_pedidos) {
+                if (!getClass().equals(ClientOrderList.class)) {
+                    startActivity(new Intent(this, ClientOrderList.class));
+                }
+                return true;
+            } else if (itemId == R.id.navcliente_ubicacion) {
+                if (!getClass().equals(LocationClientActivity.class)) {
+                    startActivity(new Intent(this, LocationClientActivity.class));
+                }
+                return true;
+            } else if (itemId == R.id.navcliente_perfil) {
+                return true;  // Ya estamos en esta actividad
+            } else {
+                return false;
+            }
+        });
 
         btn_update_info.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -61,7 +88,7 @@ public class ProfileInfoClientActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 auth.signOut();
-                Intent intent1 = new Intent(ProfileInfoClientActivity.this, ProfileUpdateClientActivity.class);
+                Intent intent1 = new Intent(ProfileInfoClientActivity.this, RolesActivity.class);
                 startActivity(intent1);
                 finish();
             }

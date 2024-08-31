@@ -19,38 +19,38 @@ public class BarnavClientActivity extends AppCompatActivity {
 
     }
 
-    protected void setupBottomNavigation() {
-        BottomNavigationView bottomNavigationView = findViewById(R.id.barnavcliente);
-
-        bottomNavigationView.setOnItemSelectedListener(new BottomNavigationView.OnItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                handleNavigationItem(item.getItemId());
-                return true;
-            }
-        });
-    }
-
-    protected void handleNavigationItem(int itemId) {
-
-        Intent intent = null;
-
-        if (itemId == R.id.navcliente_inicio) {
-            Toast.makeText(BarnavClientActivity.this, "Inicio", Toast.LENGTH_LONG).show();
-            intent = new Intent(BarnavClientActivity.this, ClientCategoryListActivity.class);
-        } else if (itemId == R.id.navcliente_pedidos) {
-            Toast.makeText(BarnavClientActivity.this, "Pedidos", Toast.LENGTH_LONG).show();
-            intent = new Intent(BarnavClientActivity.this, ClientOrderList.class);
-        } else if (itemId == R.id.navcliente_ubicacion) {
-            Toast.makeText(BarnavClientActivity.this, "Ubicación", Toast.LENGTH_LONG).show();
-            intent = new Intent(BarnavClientActivity.this, LocationClientActivity.class);
-        } else if (itemId == R.id.navcliente_perfil) {
-            Toast.makeText(BarnavClientActivity.this, "Perfil", Toast.LENGTH_LONG).show();
-            intent = new Intent(BarnavClientActivity.this, ProfileInfoClientActivity.class);
-        }
-
-        if (intent != null) {
-            startActivity(intent);
-        }
-    }
+//    protected void setupBottomNavigation() {
+//        BottomNavigationView bottomNavigationView = findViewById(R.id.barnavcliente);
+//
+//        bottomNavigationView.setOnItemSelectedListener(new BottomNavigationView.OnItemSelectedListener() {
+//            @Override
+//            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+//                handleNavigationItem(item.getItemId());
+//                return true;
+//            }
+//        });
+//    }
+//
+//    protected void handleNavigationItem(int itemId) {
+//
+//        Intent intent = null;
+//
+//        if (itemId == R.id.navcliente_inicio) {
+//            Toast.makeText(BarnavClientActivity.this, "Inicio", Toast.LENGTH_LONG).show();
+//            intent = new Intent(BarnavClientActivity.this, ClientCategoryListActivity.class);
+//        } else if (itemId == R.id.navcliente_pedidos) {
+//            Toast.makeText(BarnavClientActivity.this, "Pedidos", Toast.LENGTH_LONG).show();
+//            intent = new Intent(BarnavClientActivity.this, ClientOrderList.class);
+//        } else if (itemId == R.id.navcliente_ubicacion) {
+//            Toast.makeText(BarnavClientActivity.this, "Ubicación", Toast.LENGTH_LONG).show();
+//            intent = new Intent(BarnavClientActivity.this, LocationClientActivity.class);
+//        } else if (itemId == R.id.navcliente_perfil) {
+//            Toast.makeText(BarnavClientActivity.this, "Perfil", Toast.LENGTH_LONG).show();
+//            intent = new Intent(BarnavClientActivity.this, ProfileInfoClientActivity.class);
+//        }
+//
+//        if (intent != null) {
+//            startActivity(intent);
+//        }
+//    }
 }

@@ -1,26 +1,26 @@
 package com.atenea.unaltodosalau.crudsqlite.presentation.activity;
 
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
-import android.provider.MediaStore;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
+import android.Manifest;
 
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
-import androidx.annotation.Nullable;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.atenea.unaltodosalau.crudsqlite.R;
 import com.atenea.unaltodosalau.crudsqlite.domain.model.Category;
 import com.atenea.unaltodosalau.crudsqlite.presentation.viewModel.CategoryViewModel;
-import com.bumptech.glide.Glide;
+import com.github.dhaval2404.imagepicker.ImagePicker;
 
 public class CategoryCreateActivity extends AppCompatActivity {
     private CategoryViewModel categoryViewModel;
@@ -29,25 +29,12 @@ public class CategoryCreateActivity extends AppCompatActivity {
     private Button btnCreateCategory;
     private Uri imageUri;
     private ActivityResultLauncher<Intent> activityResultLauncher;
+    private static final int PERMISSION_REQUEST_CODE = 100;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.admin_category_create);
-
-        // botón de navegación en el Toolbar
-        Toolbar toolbar = findViewById(R.id.toolbar_new_category);
-        setSupportActionBar(toolbar);
-
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Intent para iniciar ProfileDetailActivity
-                Intent intent = new Intent(CategoryCreateActivity.this, CategoryListActivity.class);
-                startActivity(intent);
-                finish(); //  finaliza la actividad actual si no secquiere que el usuario vuelva a ella
-            }
-        });
 
         etName = findViewById(R.id.category_create_name);
         etDescription = findViewById(R.id.category_create_description);
@@ -61,14 +48,20 @@ public class CategoryCreateActivity extends AppCompatActivity {
                 result -> {
                     if (result.getResultCode() == RESULT_OK && result.getData() != null) {
                         imageUri = result.getData().getData();
-                        Glide.with(this).load(imageUri).into(imgCategory);
+                        imgCategory.setImageURI(imageUri); // Set the selected image
                     }
                 }
         );
 
         imgCategory.setOnClickListener(v -> {
-            Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-            activityResultLauncher.launch(intent);
+            // Use ImagePicker to pick an image from the gallery
+            ImagePicker.with(this)
+                    .galleryOnly()    // Only gallery images
+                    .crop()           // Optionally, you can add cropping
+                    .createIntent(intent -> {
+                        activityResultLauncher.launch(intent);
+                        return null; // Return null to prevent automatic launching
+                    });
         });
 
         btnCreateCategory.setOnClickListener(v -> {
@@ -78,7 +71,7 @@ public class CategoryCreateActivity extends AppCompatActivity {
                 Category category = new Category();
                 category.setName(name);
                 category.setDescription(description);
-                category.setImage(imageUri.toString());
+                category.setImage(imageUri.toString()); // Store the image URI as a string
                 categoryViewModel.insert(category);
                 finish();
             } else {
@@ -86,4 +79,49 @@ public class CategoryCreateActivity extends AppCompatActivity {
             }
         });
     }
+
+    private void requestStoragePermission() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            if (checkSelfPermission(Manifest.permission.READ_MEDIA_IMAGES) == PackageManager.PERMISSION_DENIED) {
+                String[] permissions = {Manifest.permission.READ_MEDIA_IMAGES};
+                requestPermissions(permissions, PERMISSION_REQUEST_CODE);
+            } else {
+                pickImageFromGallery();
+            }
+        } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            if (checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_DENIED) {
+                String[] permissions = {Manifest.permission.READ_EXTERNAL_STORAGE};
+                requestPermissions(permissions, PERMISSION_REQUEST_CODE);
+            } else {
+                pickImageFromGallery();
+            }
+        } else {
+            pickImageFromGallery();
+        }
     }
+
+    private void pickImageFromGallery() {
+        // Use ImagePicker to pick an image from the gallery
+        ImagePicker.with(this)
+                .galleryOnly()    // Only gallery images
+                .crop()           // Optionally, you can add cropping
+                .createIntent(intent -> {
+                    activityResultLauncher.launch(intent);
+                    return null; // Return null to prevent automatic launching
+                });
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (requestCode == PERMISSION_REQUEST_CODE) {
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                pickImageFromGallery();
+            } else {
+                Toast.makeText(this, "Permission denied", Toast.LENGTH_SHORT).show();
+            }
+        }
+    }
+
+
+}

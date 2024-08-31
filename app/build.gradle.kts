@@ -9,9 +9,9 @@ android {
 
     defaultConfig {
         applicationId = "com.atenea.unaltodosalau.crudsqlite"
-        minSdk = 31
+        minSdk = 34
         //noinspection ExpiredTargetSdkVersion
-        targetSdk = 31
+        targetSdk = 34
         versionCode = 1
         versionName = "1.0"
 
@@ -47,6 +47,10 @@ dependencies {
     // Glide
     implementation ("com.github.bumptech.glide:glide:4.13.2")
     annotationProcessor ("com.github.bumptech.glide:compiler:4.13.2")
+
+    // ImagePicker dependency
+    implementation("com.github.dhaval2404:imagepicker:2.1")
+
     // Other dependencies
     implementation(libs.appcompat)
     implementation(libs.material)
@@ -56,6 +60,7 @@ dependencies {
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
     implementation ("com.airbnb.android:lottie:6.0.0")
+    implementation ("com.google.android.material:material:1.10.0")
     // import Firebase BoM
     implementation(platform("com.google.firebase:firebase-bom:33.1.2"))
     // Firebase Authentication and Firestore, Storage

@@ -1,13 +1,13 @@
 {
   "project_info": {
-    "project_number": "564835739751",
-    "project_id": "crud-sqlite",
-    "storage_bucket": "crud-sqlite.appspot.com"
+    "project_number": "454538991847",
+    "project_id": "pan-pan-app",
+    "storage_bucket": "pan-pan-app.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:564835739751:android:08fe75c96467bbfec48cc2",
+        "mobilesdk_app_id": "1:454538991847:android:ec6d7e076ec3376a0c2a42",
         "android_client_info": {
           "package_name": "com.atenea.unaltodosalau.crudsqlite"
         }
@@ -15,7 +15,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyDvxKMAwVhpi7pjMFCb1d1ckWMlfRWhLtk"
+          "current_key": "AIzaSyCydEUJgI6bO3lJpzF8PbGPwjFQFXKX87Q"
         }
       ],
       "services": {

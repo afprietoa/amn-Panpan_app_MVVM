@@ -19,7 +19,7 @@ public class BarnavAdminActivity extends AppCompatActivity {
 
     }
 
-    protected void setupBottomNavigation() {
+    /*protected void setupBottomNavigation() {
         BottomNavigationView bottomNavigationView = findViewById(R.id.barnavadm);
 
         bottomNavigationView.setOnItemSelectedListener(new BottomNavigationView.OnItemSelectedListener() {
@@ -52,5 +52,5 @@ public class BarnavAdminActivity extends AppCompatActivity {
         if (intent != null) {
             startActivity(intent);
         }
-    }
+    }*/
 }

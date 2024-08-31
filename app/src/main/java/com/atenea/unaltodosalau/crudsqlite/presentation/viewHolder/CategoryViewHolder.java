@@ -1,7 +1,7 @@
 package com.atenea.unaltodosalau.crudsqlite.presentation.viewHolder;
 
+import android.app.Activity;
 import android.net.Uri;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -13,8 +13,10 @@ import com.atenea.unaltodosalau.crudsqlite.core.BaseViewHolder;
 import com.atenea.unaltodosalau.crudsqlite.domain.model.Category;
 import com.atenea.unaltodosalau.crudsqlite.presentation.adapter.CategoryListAdapter;
 import com.bumptech.glide.Glide;
+import com.github.dhaval2404.imagepicker.ImagePicker;
 
-import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.InputStream;
 
 public class CategoryViewHolder extends BaseViewHolder {
     private TextView txtName, txtDescription;
@@ -34,42 +36,29 @@ public class CategoryViewHolder extends BaseViewHolder {
         txtDescription.setText(category.getDescription());
         String imageString = category.getImage();
 
-        Log.d("CategoryViewHolder", "Image String: " + imageString); // Agrega este log para verificar el valor
-
         if (imageString != null) {
-            if (imageString.startsWith("file://")) {
-                // Es una ruta de archivo local
+            try {
+                // Intentar interpretar el string como un recurso drawable
+                int imageResId = Integer.parseInt(imageString);
+                imgCategory.setImageResource(imageResId);
+            } catch (NumberFormatException e) {
+                // Si no es un número, intentar cargarlo como URI desde la galería
                 Uri imageUri = Uri.parse(imageString);
-                File file = new File(imageUri.getPath());
-                if (file.exists()) {
-                    Glide.with(itemView.getContext())
-                            .load(imageUri)
-                            .placeholder(R.drawable.placeholder_image)
-                            .error(R.drawable.error_image)
-                            .into(imgCategory);
+                if (imageUri != null && imageUri.getScheme() != null) {
+                    // Usar ImagePicker para cargar la imagen desde la galería
+                    ImagePicker.with((Activity) itemView.getContext())
+                            .crop()                // (Optional) Crop the image (you can customize the crop properties)
+                            .galleryOnly()         // (Optional) Only allow picking images from the gallery
+                            .createIntent(intent -> {
+                                imgCategory.setImageURI(imageUri);
+                                return null; // Return null to avoid launching the intent immediately
+                            });
                 } else {
-                    imgCategory.setImageResource(R.drawable.error_image); // Imagen por defecto si el archivo no existe
-                }
-            } else {
-                // Podría ser una URL o un recurso drawable
-                try {
-                    int imageResId = Integer.parseInt(imageString);
-                    Glide.with(itemView.getContext())
-                            .load(imageResId)
-                            .placeholder(R.drawable.placeholder_image)
-                            .error(R.drawable.error_image)
-                            .into(imgCategory);
-                } catch (NumberFormatException e) {
-                    Uri imageUri = Uri.parse(imageString);
-                    Glide.with(itemView.getContext())
-                            .load(imageUri)
-                            .placeholder(R.drawable.placeholder_image)
-                            .error(R.drawable.error_image)
-                            .into(imgCategory);
+                    imgCategory.setImageResource(R.drawable.error_image);
                 }
             }
         } else {
-            imgCategory.setImageResource(R.drawable.error_image);
+            imgCategory.setImageResource(R.drawable.error_image); // Imagen por defecto si no hay imagen
         }
 
         btnEdit.setOnClickListener(v -> listener.onEditClick(category));

@@ -29,7 +29,7 @@ public class ClientProductListViewModel extends AndroidViewModel {
         return repository.getProductsByCategory(categoryId);
     }
 
-    public LiveData<List<Product>> getProductsByByName(String name) {
+    public LiveData<List<Product>> getProductsByName(String name) {
         return repository.getProductsByByName(name);
     }
 }

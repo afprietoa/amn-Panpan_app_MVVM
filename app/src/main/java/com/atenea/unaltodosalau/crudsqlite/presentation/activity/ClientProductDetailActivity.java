@@ -1,6 +1,10 @@
 package com.atenea.unaltodosalau.crudsqlite.presentation.activity;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -9,6 +13,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 
@@ -17,6 +22,7 @@ import com.atenea.unaltodosalau.crudsqlite.domain.model.Product;
 import com.atenea.unaltodosalau.crudsqlite.domain.model.ShoppingBagProduct;
 import com.atenea.unaltodosalau.crudsqlite.presentation.viewModel.ClientProductDetailViewModel;
 import com.bumptech.glide.Glide;
+import com.github.dhaval2404.imagepicker.ImagePicker;
 
 public class ClientProductDetailActivity extends AppCompatActivity {
     private ClientProductDetailViewModel viewModel;
@@ -27,6 +33,7 @@ public class ClientProductDetailActivity extends AppCompatActivity {
     private Product product;
     private int quantity = 1;
     private ImageButton atrasButton;
+    private static final int PERMISSION_REQUEST_CODE = 100;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,11 +49,14 @@ public class ClientProductDetailActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 Intent intent = new Intent(ClientProductDetailActivity.this, ClientProductListActivity.class);
+                intent.putExtra("categoryId", product.getIdCategory());
                 startActivity(intent);
                 finish(); // Finaliza esta actividad si se desea que el usuario vuelva a ella
             }
         });
 
+        // Request storage permission for handling gallery images
+        requestStoragePermission();
 
         productName = findViewById(R.id.text_pricipal_product_detail_client);
         productDescription = findViewById(R.id.text_product_description_detail_client);
@@ -66,8 +76,30 @@ public class ClientProductDetailActivity extends AppCompatActivity {
         productDescription.setText(product.getDescription());
         productPrice.setText(String.valueOf(product.getPrice()));
 
-        int imageResId = Integer.parseInt(product.getImage1());
-        Glide.with(this).load(imageResId).into(productImage);
+        String imageString = product.getImage1();
+
+        if (imageString != null) {
+            try {
+                // Try to interpret the string as a drawable resource ID
+                int imageResId = Integer.parseInt(imageString);
+                productImage.setImageResource(imageResId);
+            } catch (NumberFormatException e) {
+                // If it's not a number, try to load it as a URI from the gallery
+                Uri imageUri = Uri.parse(imageString);
+                if (imageUri != null && imageUri.getScheme() != null) {
+                    ImagePicker.with(this)
+                            .galleryOnly()         // Only allow picking images from the gallery
+                            .createIntent(intentPicker -> {
+                                productImage.setImageURI(imageUri);
+                                return null;  // Returning null to avoid launching the intent immediately
+                            });
+                } else {
+                    productImage.setImageResource(R.drawable.error_image);
+                }
+            }
+        } else {
+            productImage.setImageResource(R.drawable.error_image); // Default image if there's no image
+        }
 
         incrementButton.setOnClickListener(v -> {
             quantity++;
@@ -86,5 +118,56 @@ public class ClientProductDetailActivity extends AppCompatActivity {
             viewModel.addProductToCart(shoppingBagProduct);
             Toast.makeText(this, "Product added to cart", Toast.LENGTH_SHORT).show();
         });
+    }
+
+    private void loadImage(String imageString) {
+        if (imageString != null) {
+            try {
+                // Try to interpret the string as a drawable resource ID
+                int imageResId = Integer.parseInt(imageString);
+                productImage.setImageResource(imageResId);
+            } catch (NumberFormatException e) {
+                // If it's not a number, try to load it as a URI from the gallery
+                Uri imageUri = Uri.parse(imageString);
+                if (imageUri != null && imageUri.getScheme() != null) {
+                    ImagePicker.with(this)
+                            .galleryOnly()         // Only allow picking images from the gallery
+                            .createIntent(intentPicker -> {
+                                productImage.setImageURI(imageUri);
+                                return null;  // Returning null to avoid launching the intent immediately
+                            });
+                } else {
+                    productImage.setImageResource(R.drawable.error_image);
+                }
+            }
+        } else {
+            productImage.setImageResource(R.drawable.error_image); // Default image if there's no image
+        }
+    }
+
+    private void requestStoragePermission() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            if (checkSelfPermission(Manifest.permission.READ_MEDIA_IMAGES) == PackageManager.PERMISSION_DENIED) {
+                String[] permissions = {Manifest.permission.READ_MEDIA_IMAGES};
+                requestPermissions(permissions, PERMISSION_REQUEST_CODE);
+            }
+        } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            if (checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_DENIED) {
+                String[] permissions = {Manifest.permission.READ_EXTERNAL_STORAGE};
+                requestPermissions(permissions, PERMISSION_REQUEST_CODE);
+            }
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (requestCode == PERMISSION_REQUEST_CODE) {
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                loadImage(product.getImage1()); // Reload the image if permission is granted
+            } else {
+                Toast.makeText(this, "Permission denied", Toast.LENGTH_SHORT).show();
+            }
+        }
     }
 }

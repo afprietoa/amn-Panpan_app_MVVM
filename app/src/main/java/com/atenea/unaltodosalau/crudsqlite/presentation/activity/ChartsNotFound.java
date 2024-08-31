@@ -1,29 +1,51 @@
 package com.atenea.unaltodosalau.crudsqlite.presentation.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import com.atenea.unaltodosalau.crudsqlite.R;
 
 public class ChartsNotFound extends AppCompatActivity {
+    private BottomNavigationView bottomNavigationView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
         setContentView(R.layout.charts_not_found);
-        ConstraintLayout constraintLayout = findViewById(R.id.constraintLayout);
 
-        ViewCompat.setOnApplyWindowInsetsListener(constraintLayout, (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
+        bottomNavigationView = findViewById(R.id.barnavadm);
+
+        // Configuración de BottomNavigationView
+        bottomNavigationView.setSelectedItemId(R.id.nav_estadisticas);  // Ajusta según la actividad actual
+        bottomNavigationView.setOnNavigationItemSelectedListener(item -> {
+            int itemId = item.getItemId();
+            Intent intent;
+            if (itemId == R.id.nav_homeadm) {
+                if (!getClass().getSimpleName().equals("CategoryListActivity")) {
+                    intent = new Intent(ChartsNotFound.this, CategoryListActivity.class);
+                    startActivity(intent);
+                }
+                return true;
+            } else if (itemId == R.id.nav_ordersadm) {
+                if (!getClass().getSimpleName().equals("AdminOrdersList")) {
+                    intent = new Intent(ChartsNotFound.this, AdminOrdersList.class);
+                    startActivity(intent);
+                }
+                return true;
+            } else if (itemId == R.id.nav_estadisticas) {
+                return true;  // Ya estamos en esta actividad
+            } else if (itemId == R.id.nav_profileadm) {
+                if (!getClass().getSimpleName().equals("ProfileDetailActivity")) {
+                    intent = new Intent(ChartsNotFound.this, ProfileDetailActivity.class);
+                    startActivity(intent);
+                }
+                return true;
+            } else {
+                return false;
+            }
         });
     }
 }

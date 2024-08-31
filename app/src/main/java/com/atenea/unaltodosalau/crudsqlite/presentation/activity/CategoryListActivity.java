@@ -1,11 +1,17 @@
 package com.atenea.unaltodosalau.crudsqlite.presentation.activity;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -16,29 +22,62 @@ import com.atenea.unaltodosalau.crudsqlite.data.datasource.MemoryDataSource;
 import com.atenea.unaltodosalau.crudsqlite.domain.model.Category;
 import com.atenea.unaltodosalau.crudsqlite.presentation.adapter.CategoryListAdapter;
 import com.atenea.unaltodosalau.crudsqlite.presentation.viewModel.CategoryViewModel;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.List;
 
-public class CategoryListActivity extends BarnavAdminActivity {
+public class CategoryListActivity extends AppCompatActivity {
     private CategoryViewModel categoryViewModel;
     private RecyclerView recyclerView;
     private CategoryListAdapter adapter;
     private FloatingActionButton fabAddCategory;
+    private BottomNavigationView bottomNavigationView;
+
+    private static final int PERMISSION_REQUEST_CODE = 100;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.admin_category_list);
-        setupBottomNavigation();
         Log.d("CategoryListActivity", "Activity created");
-
+        requestStoragePermission();
         recyclerView = findViewById(R.id.category_list_admin);
         fabAddCategory = findViewById(R.id.add_category_button);
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         adapter = new CategoryListAdapter();
         recyclerView.setAdapter(adapter);
+
+        // Configuración de la barra de navegación
+        bottomNavigationView = findViewById(R.id.barnavadm);
+        Log.d("reference barnav menu adm",bottomNavigationView.toString());
+        bottomNavigationView.setSelectedItemId(R.id.nav_homeadm);
+
+        bottomNavigationView.setOnNavigationItemSelectedListener(item -> {
+            int itemId = item.getItemId();
+            Log.d("id del item", String.valueOf(itemId));
+            if (itemId == R.id.nav_homeadm) {
+                return true;  // Ya estamos en esta actividad
+            } else if (itemId == R.id.nav_ordersadm) {
+                if (!getClass().equals(AdminOrdersList.class)) {
+                    startActivity(new Intent(this, AdminOrdersList.class));
+                }
+                return true;
+            } else if (itemId == R.id.nav_estadisticas) {
+                if (!getClass().equals(ChartsNotFound.class)) {
+                    startActivity(new Intent(this, ChartsNotFound.class));
+                }
+                return true;
+            } else if (itemId == R.id.nav_profileadm) {
+                if (!getClass().equals(ProfileDetailActivity.class)) {
+                    startActivity(new Intent(this, ProfileDetailActivity.class));
+                }
+                return true;
+            } else {
+                return false;
+            }
+        });
 
         // Precarga de datos de MemoryDataSource
         AppDatabase db = AppDatabase.getInstance(this);
@@ -58,7 +97,6 @@ public class CategoryListActivity extends BarnavAdminActivity {
                 Log.d("CategoryListActivity", "Categories loaded: " + categories.size());
             }
         });
-
 
         adapter.setOnItemClickListener(new CategoryListAdapter.OnItemClickListener() {
             @Override
@@ -87,28 +125,29 @@ public class CategoryListActivity extends BarnavAdminActivity {
         });
     }
 
-    @Override
-    protected void handleNavigationItem(int itemId) {
-
-        Intent intent = null;
-
-        if (itemId == R.id.nav_homeadm) {
-            Toast.makeText(CategoryListActivity.this, "Inicio", Toast.LENGTH_LONG).show();
-            intent = new Intent(CategoryListActivity.this, CategoryListActivity.class);
-        } else if (itemId == R.id.nav_ordersadm) {
-            Toast.makeText(CategoryListActivity.this, "Pedidos", Toast.LENGTH_LONG).show();
-            intent = new Intent(CategoryListActivity.this, AdminOrdersList.class);
-        } else if (itemId == R.id.nav_estadisticas) {
-            Toast.makeText(CategoryListActivity.this, "Estadisticas", Toast.LENGTH_LONG).show();
-            intent = new Intent(CategoryListActivity.this, ChartsNotFound.class);
-        } else if (itemId == R.id.nav_profileadm) {
-            Toast.makeText(CategoryListActivity.this, "Perfil", Toast.LENGTH_LONG).show();
-            intent = new Intent(CategoryListActivity.this, ProfileDetailActivity.class);
+    private void requestStoragePermission() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            if (checkSelfPermission(Manifest.permission.READ_MEDIA_IMAGES) == PackageManager.PERMISSION_DENIED) {
+                String[] permissions = {Manifest.permission.READ_MEDIA_IMAGES};
+                requestPermissions(permissions, PERMISSION_REQUEST_CODE);
+            }
+        } else {
+            if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_DENIED) {
+                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, PERMISSION_REQUEST_CODE);
+            }
         }
+    }
 
-        if (intent != null) {
-            startActivity(intent);
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        Log.d("Permissions", "Request Code: " + requestCode);
+        if (requestCode == PERMISSION_REQUEST_CODE) {
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                Toast.makeText(this, "Permission granted", Toast.LENGTH_SHORT).show();
+            } else {
+                Toast.makeText(this, "Permission denied", Toast.LENGTH_SHORT).show();
+            }
         }
     }
 }
-
